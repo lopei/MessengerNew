@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "230849848354",
+    "firebase_url": "https://messenger-73742.firebaseio.com",
+    "project_id": "messenger-73742",
+    "storage_bucket": "messenger-73742.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:230849848354:android:8424ac7ccc5a185b",
+        "android_client_info": {
+          "package_name": "com.anotap.messenger"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "230849848354-ruslesnrt6ft3ri62ksctkbigpogd0c1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWgpwxyT_0ndJCPIMWF5WOWs7rTmnnSko"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

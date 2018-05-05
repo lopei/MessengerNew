@@ -5,5 +5,3 @@
 /build
 /projectFilesBackup
 *.iml
-build-config-fields.properties
-**/*.json
