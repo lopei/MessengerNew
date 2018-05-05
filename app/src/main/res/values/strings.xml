@@ -312,7 +312,7 @@
 
     <string name="community">Community</string>
 
-    <!-- После добавления ошибок в этот список обязательно добавить их обработку в класс biz.dealnote.messenger.service.operations.ApiExceptionAttrs !!!!!!-->
+    <!-- После добавления ошибок в этот список обязательно добавить их обработку в класс com.anotap.messenger.service.operations.ApiExceptionAttrs !!!!!!-->
     <string name="api_error_1">Unknown error occurred</string>
     <string name="api_error_2">Application is disabled. Enable your application or use test mode</string>
     <string name="api_error_3">Unknown method passed</string>

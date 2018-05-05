@@ -20,7 +20,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginRight="2dp" />
 
-    <biz.dealnote.messenger.view.OnlineView
+    <com.anotap.messenger.view.OnlineView
         android:id="@+id/item_message_important"
         android:layout_width="@dimen/online_dot_size"
         android:layout_height="@dimen/online_dot_size"
@@ -32,7 +32,7 @@
         app:circle_color="?icon_color_active"
         app:stroke_color="?android:colorBackground" />
 
-    <biz.dealnote.messenger.view.BubbleLinearLayout
+    <com.anotap.messenger.view.BubbleLinearLayout
         android:id="@+id/item_message_bubble"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -52,7 +52,7 @@
         app:arrowWidth="8dp"
         app:bubbleColor="?attr/message_bubble_color">
 
-        <biz.dealnote.messenger.view.emoji.EmojiconTextView
+        <com.anotap.messenger.view.emoji.EmojiconTextView
             android:id="@+id/item_message_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -102,7 +102,7 @@
                 android:tint="?textColorSecondary" />
         </LinearLayout>
 
-    </biz.dealnote.messenger.view.BubbleLinearLayout>
+    </com.anotap.messenger.view.BubbleLinearLayout>
 
 
 </RelativeLayout>

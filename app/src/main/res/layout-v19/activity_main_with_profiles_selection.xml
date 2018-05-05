@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <!-- The important thing to note here is the added fitSystemWindows -->
-    <biz.dealnote.messenger.view.ErrorIgnoreDrawerLayout
+    <com.anotap.messenger.view.ErrorIgnoreDrawerLayout
         android:id="@+id/my_drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -46,12 +46,12 @@
 
         <fragment xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/navigation_drawer"
-            android:name="biz.dealnote.messenger.fragment.NavigationFragment"
+            android:name="com.anotap.messenger.fragment.NavigationFragment"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"
             tools:layout="@layout/fragment_navigation_drawer" />
 
-    </biz.dealnote.messenger.view.ErrorIgnoreDrawerLayout>
+    </com.anotap.messenger.view.ErrorIgnoreDrawerLayout>
 
 </RelativeLayout>

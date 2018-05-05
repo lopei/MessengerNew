@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <biz.dealnote.messenger.view.square.SquareFrameLayout
+            <com.anotap.messenger.view.square.SquareFrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -31,7 +31,7 @@
                     android:background="?attr/messages_background_color"
                     android:scaleType="centerCrop" />
 
-            </biz.dealnote.messenger.view.square.SquareFrameLayout>
+            </com.anotap.messenger.view.square.SquareFrameLayout>
 
             <TextView
                 android:layout_gravity="center"

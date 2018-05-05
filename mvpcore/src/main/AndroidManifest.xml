@@ -14,4 +14,4 @@
      limitations under the License.
 -->
 <manifest
-    package="biz.dealnote.mvp"/>
+    package="com.anotap.mvp"/>

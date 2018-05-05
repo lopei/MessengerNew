@@ -28,7 +28,7 @@
             android:scaleType="centerCrop"
             android:src="@drawable/play" />
 
-        <biz.dealnote.messenger.view.WaveFormView
+        <com.anotap.messenger.view.WaveFormView
             android:id="@+id/item_voice_wave_form_view"
             android:layout_width="match_parent"
             android:layout_height="56dp"

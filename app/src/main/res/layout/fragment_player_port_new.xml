@@ -12,7 +12,7 @@
         android:layout_alignParentBottom="true"
         android:padding="4dp">
 
-        <biz.dealnote.messenger.view.CircleCounterButton
+        <com.anotap.messenger.view.CircleCounterButton
             android:id="@+id/audio_translate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -23,7 +23,7 @@
             app:button_icon="@drawable/ic_vk_share"
             app:noactive_icon_color="?icon_color_static" />
 
-        <biz.dealnote.messenger.view.CircleCounterButton
+        <com.anotap.messenger.view.CircleCounterButton
             android:id="@+id/audio_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
             app:button_icon="@drawable/plus"
             app:noactive_icon_color="?icon_color_static" />
 
-        <biz.dealnote.messenger.view.CircleCounterButton
+        <com.anotap.messenger.view.CircleCounterButton
             android:id="@+id/audio_share"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -73,7 +73,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1">
 
-            <biz.dealnote.messenger.player.ui.ShuffleButton
+            <com.anotap.messenger.player.ui.ShuffleButton
                 android:id="@+id/action_button_shuffle"
                 style="@style/Widget.AppCompat.Button.Borderless.Colored"
                 android:layout_width="@dimen/audio_player_controls_end_button_width"
@@ -88,7 +88,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1">
 
-            <biz.dealnote.messenger.player.ui.RepeatingImageButton
+            <com.anotap.messenger.player.ui.RepeatingImageButton
                 android:id="@+id/action_button_previous"
                 style="?borderlessButtonStyle"
                 android:layout_width="@dimen/audio_player_controls_main_button_width"
@@ -105,7 +105,7 @@
             android:layout_weight="1"
             android:paddingBottom="2dp">
 
-            <biz.dealnote.messenger.player.ui.PlayPauseButton
+            <com.anotap.messenger.player.ui.PlayPauseButton
                 android:id="@+id/action_button_play"
                 android:layout_width="@dimen/audio_player_controls_main_button_width"
                 android:layout_height="@dimen/audio_player_controls_main_button_height"
@@ -123,7 +123,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1">
 
-            <biz.dealnote.messenger.player.ui.RepeatingImageButton
+            <com.anotap.messenger.player.ui.RepeatingImageButton
                 android:id="@+id/action_button_next"
                 style="?borderlessButtonStyle"
                 android:layout_width="@dimen/audio_player_controls_main_button_width"
@@ -139,7 +139,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1">
 
-            <biz.dealnote.messenger.player.ui.RepeatButton
+            <com.anotap.messenger.player.ui.RepeatButton
                 android:id="@+id/action_button_repeat"
                 style="?borderlessButtonStyle"
                 android:layout_width="@dimen/audio_player_controls_end_button_width"

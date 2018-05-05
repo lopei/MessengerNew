@@ -40,7 +40,7 @@
             android:textSize="@dimen/font_size_subtitle"
             android:textStyle="bold" />
 
-        <biz.dealnote.messenger.view.ColorFilterImageView
+        <com.anotap.messenger.view.ColorFilterImageView
             android:id="@+id/item_copy_history_post_dots"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:padding="8dp"
@@ -68,7 +68,7 @@
             android:paddingRight="16dp"
             android:paddingTop="4dp">
 
-            <biz.dealnote.messenger.view.emoji.EmojiconTextView
+            <com.anotap.messenger.view.emoji.EmojiconTextView
                 android:id="@+id/item_post_copy_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

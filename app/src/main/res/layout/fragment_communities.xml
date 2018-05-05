@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:background="?colorPrimary">
 
-        <biz.dealnote.messenger.view.MySearchView
+        <com.anotap.messenger.view.MySearchView
             android:id="@+id/searchview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

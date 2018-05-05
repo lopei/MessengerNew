@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <biz.dealnote.messenger.view.AspectRatioImageView
+            <com.anotap.messenger.view.AspectRatioImageView
                 android:id="@+id/item_local_album_cover"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

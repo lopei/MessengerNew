@@ -54,7 +54,7 @@
                         android:textSize="@dimen/font_size_additional"
                         tools:text="1533" />
 
-                    <biz.dealnote.messenger.view.ColorFilterImageView
+                    <com.anotap.messenger.view.ColorFilterImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="4dp"
@@ -108,7 +108,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
-                <biz.dealnote.messenger.view.AspectRatioImageView
+                <com.anotap.messenger.view.AspectRatioImageView
                     android:id="@+id/video_image"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

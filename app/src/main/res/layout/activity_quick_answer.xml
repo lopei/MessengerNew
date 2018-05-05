@@ -36,7 +36,7 @@
                     android:layout_height="@dimen/message_author_avatar_size"
                     android:layout_marginLeft="4dp" />
 
-                <biz.dealnote.messenger.view.BubbleLinearLayout
+                <com.anotap.messenger.view.BubbleLinearLayout
                     android:id="@+id/item_message_bubble"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -55,7 +55,7 @@
                     app:arrowWidth="8dp"
                     app:bubbleColor="?attr/message_bubble_color">
 
-                    <biz.dealnote.messenger.view.emoji.EmojiconTextView xmlns:emojicon="http://schemas.android.com/apk/res-auto"
+                    <com.anotap.messenger.view.emoji.EmojiconTextView xmlns:emojicon="http://schemas.android.com/apk/res-auto"
                         android:id="@+id/item_message_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -75,7 +75,7 @@
                         android:textColor="?android:textColorSecondary"
                         android:textSize="@dimen/font_size_additional" />
 
-                </biz.dealnote.messenger.view.BubbleLinearLayout>
+                </com.anotap.messenger.view.BubbleLinearLayout>
 
 
             </RelativeLayout>

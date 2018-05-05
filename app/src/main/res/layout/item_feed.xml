@@ -83,7 +83,7 @@
                         android:textSize="@dimen/font_size_additional"
                         tools:text="1533" />
 
-                    <biz.dealnote.messenger.view.ColorFilterImageView
+                    <com.anotap.messenger.view.ColorFilterImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="4dp"
@@ -112,7 +112,7 @@
                     android:layout_marginRight="8dp"
                     android:paddingBottom="6dp">
 
-                    <biz.dealnote.messenger.view.emoji.EmojiconTextView
+                    <com.anotap.messenger.view.emoji.EmojiconTextView
                         android:id="@+id/item_post_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -166,7 +166,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
-                <biz.dealnote.messenger.view.CircleCounterButton
+                <com.anotap.messenger.view.CircleCounterButton
                     android:id="@+id/like_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -180,7 +180,7 @@
                     app:button_icon="@drawable/heart_outline"
                     app:noactive_icon_color="?attr/icon_color_static" />
 
-                <biz.dealnote.messenger.view.CircleCounterButton
+                <com.anotap.messenger.view.CircleCounterButton
                     android:id="@+id/comments_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -192,7 +192,7 @@
                     app:button_icon="@drawable/comment_outline"
                     app:noactive_icon_color="?attr/icon_color_static" />
 
-                <biz.dealnote.messenger.view.CircleCounterButton
+                <com.anotap.messenger.view.CircleCounterButton
                     android:id="@+id/share_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

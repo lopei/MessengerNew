@@ -19,7 +19,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginRight="2dp" />
 
-    <biz.dealnote.messenger.view.OnlineView
+    <com.anotap.messenger.view.OnlineView
         android:id="@+id/item_message_important"
         android:layout_width="@dimen/online_dot_size"
         android:layout_height="@dimen/online_dot_size"

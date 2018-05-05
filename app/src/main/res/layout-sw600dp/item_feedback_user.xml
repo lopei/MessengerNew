@@ -71,7 +71,7 @@
                             android:layout_centerInParent="true"
                             android:layout_centerVertical="true" />
 
-                        <biz.dealnote.messenger.view.OnlineView
+                        <com.anotap.messenger.view.OnlineView
                             android:id="@+id/item_circle_friend_changable"
                             android:layout_width="16dp"
                             android:layout_height="16dp"

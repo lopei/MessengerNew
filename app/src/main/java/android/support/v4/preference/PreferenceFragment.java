@@ -32,7 +32,7 @@ import android.view.View.OnKeyListener;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import biz.dealnote.messenger.R;
+import com.anotap.messenger.R;
 
 public abstract class PreferenceFragment extends Fragment implements
 		PreferenceManagerCompat.OnPreferenceTreeClickListener {

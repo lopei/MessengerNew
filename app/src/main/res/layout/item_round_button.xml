@@ -8,7 +8,7 @@
     android:paddingTop="8dp"
     android:paddingBottom="8dp">
 
-    <biz.dealnote.messenger.view.RoundedButton
+    <com.anotap.messenger.view.RoundedButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/Base.TextAppearance.AppCompat.Button"

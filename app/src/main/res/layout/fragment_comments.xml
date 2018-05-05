@@ -67,7 +67,7 @@
             android:textSize="@dimen/font_size_subtitle"
             tools:text="Ruslan Kolbasa" />
 
-        <biz.dealnote.messenger.view.ColorFilterImageView
+        <com.anotap.messenger.view.ColorFilterImageView
             android:id="@+id/fragment_comments_delete_reply"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

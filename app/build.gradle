@@ -12,7 +12,7 @@ android {
     buildToolsVersion '27.0.3'
 
     defaultConfig {
-        applicationId "biz.dealnote.messenger"
+        applicationId "com.anotap.messenger"
         minSdkVersion 16
         targetSdkVersion 27
         versionCode 40700
@@ -34,14 +34,14 @@ android {
     buildTypes {
         release {
             minifyEnabled true
-            multiDexEnabled false
+            multiDexEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
 
         debug {
             minifyEnabled false
-            multiDexEnabled false
+            multiDexEnabled true
         }
     }
 
@@ -73,7 +73,7 @@ android {
             buildConfigField 'String', 'YOUTUBE_DEV_KEY', getProps("full_youtube_dev_key")
         }
         lite {
-            applicationId "biz.dealnote.messenger"
+            applicationId "com.anotap.messenger"
             dimension "type"
             buildConfigField 'int', 'VK_API_APP_ID', getProps("lite_vk_app_id")
             buildConfigField 'String', 'GCM_SENDER_ID', getProps("lite_gcm_sender_id")
@@ -153,6 +153,7 @@ dependencies {
     implementation "com.google.firebase:firebase-database:$firebaseLibraryVersion"
     implementation 'com.google.android.exoplayer:exoplayer:2.7.1'
     implementation "com.android.support:exifinterface:$supportLibraryVersion"
+    implementation 'com.android.support:multidex:1.0.3'
 }
 
 apply plugin: 'com.google.gms.google-services'

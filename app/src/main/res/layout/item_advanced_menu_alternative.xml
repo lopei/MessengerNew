@@ -52,7 +52,7 @@
             android:layout_width="16dp"
             android:layout_height="16dp" />
 
-        <biz.dealnote.messenger.view.ColorFilterImageView
+        <com.anotap.messenger.view.ColorFilterImageView
             app:filter_color="?attr/quick_reply_icon_color"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"

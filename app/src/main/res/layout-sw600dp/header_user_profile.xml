@@ -32,7 +32,7 @@
                 android:background="@drawable/sel_button_round_5_white"
                 android:padding="1.5dp" />
 
-            <biz.dealnote.messenger.view.OnlineView
+            <com.anotap.messenger.view.OnlineView
                 android:id="@+id/header_navi_menu_online"
                 android:layout_width="@dimen/online_dot_size_big"
                 android:layout_height="@dimen/online_dot_size_big"
@@ -87,7 +87,7 @@
                 android:fontFamily="sans-serif-light"
                 android:textSize="@dimen/font_size_subtitle" />
 
-            <biz.dealnote.messenger.view.emoji.EmojiconTextView xmlns:emojicon="http://schemas.android.com/apk/res-auto"
+            <com.anotap.messenger.view.emoji.EmojiconTextView xmlns:emojicon="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/fragment_user_profile_status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

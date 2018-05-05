@@ -31,7 +31,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <biz.dealnote.messenger.view.emoji.EmojiconTextView
+                    <com.anotap.messenger.view.emoji.EmojiconTextView
                         android:id="@+id/fragment_post_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -102,7 +102,7 @@
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp">
 
-                    <biz.dealnote.messenger.view.CircleCounterButton
+                    <com.anotap.messenger.view.CircleCounterButton
                         android:background="?attr/selectableItemBackgroundBorderless"
                         android:id="@+id/like_button"
                         android:layout_width="wrap_content"
@@ -116,7 +116,7 @@
                         custom:noactive_icon_color="?attr/icon_color_static"
                         custom:button_icon="@drawable/heart_outline"/>
 
-                    <biz.dealnote.messenger.view.CircleCounterButton
+                    <com.anotap.messenger.view.CircleCounterButton
                         android:background="?attr/selectableItemBackgroundBorderless"
                         android:id="@+id/comments_button"
                         android:layout_centerVertical="true"
@@ -129,7 +129,7 @@
                         custom:noactive_icon_color="?attr/icon_color_static"
                         custom:button_icon="@drawable/comment_outline" />
 
-                    <biz.dealnote.messenger.view.CircleCounterButton
+                    <com.anotap.messenger.view.CircleCounterButton
                         android:background="?attr/selectableItemBackgroundBorderless"
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
