@@ -19,6 +19,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ActionMode;
@@ -164,6 +166,7 @@ public class MainActivity extends AppCompatActivity implements NavigationFragmen
     private AbsDrawerItem mCurrentFrontSection;
     private Toolbar mToolbar;
     private DrawerLayout mDrawerLayout;
+    ActionBarDrawerToggle mDrawerToggle;
     private MusicUtils.ServiceToken mAudioPlayServiceToken;
     private UploadUtils.ServiceToken mUploadServiceToken;
 
@@ -288,6 +291,29 @@ public class MainActivity extends AppCompatActivity implements NavigationFragmen
     private void resolveToolbarNavigationIcon() {
         if (isNull(mToolbar)) return;
 
+        final ActionBar actionBar = getSupportActionBar();
+
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.app_name, R.string.app_name)
+        {
+
+            public void onDrawerClosed(View view)
+            {
+                supportInvalidateOptionsMenu();
+                //drawerOpened = false;
+            }
+
+            public void onDrawerOpened(View drawerView)
+            {
+                supportInvalidateOptionsMenu();
+                //drawerOpened = true;
+            }
+        };
+        mDrawerToggle.setDrawerIndicatorEnabled(true);
+        mDrawerLayout.addDrawerListener(mDrawerToggle);
+        mDrawerToggle.syncState();
+
+
         FragmentManager manager = getSupportFragmentManager();
         if (manager.getBackStackEntryCount() > 1) {
             Drawable backIcon = getFrontFragement() instanceof PhotoPagerFragment ||
@@ -295,10 +321,10 @@ public class MainActivity extends AppCompatActivity implements NavigationFragmen
                     ContextCompat.getDrawable(this, R.drawable.arrow_left) :
                     CurrentTheme.getDrawableFromAttribute(this, R.attr.toolbarBackIcon);
 
-            mToolbar.setNavigationIcon(backIcon);
+            //mToolbar.setNavigationIcon(backIcon);
             mToolbar.setNavigationOnClickListener(v -> onBackPressed());
         } else {
-            mToolbar.setNavigationIcon(CurrentTheme.getDrawableFromAttribute(this, R.attr.toolbarDrawerIcon));
+            //mToolbar.setNavigationIcon(CurrentTheme.getDrawableFromAttribute(this, R.attr.toolbarDrawerIcon));
             mToolbar.setNavigationOnClickListener(v -> {
                 if (mDrawerLayout.getDrawerLockMode(GravityCompat.START) == DrawerLayout.LOCK_MODE_UNLOCKED) {
                     NavigationFragment navigationFragment = getNavigationFragment();
@@ -1229,5 +1255,19 @@ public class MainActivity extends AppCompatActivity implements NavigationFragmen
                 showCommunityInviteDialog();
             }
         }
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState)
+    {
+        super.onPostCreate(savedInstanceState);
+        mDrawerToggle.syncState();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig)
+    {
+        super.onConfigurationChanged(newConfig);
+        mDrawerToggle.onConfigurationChanged(newConfig);
     }
 }
