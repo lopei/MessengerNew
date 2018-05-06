@@ -237,7 +237,7 @@ public class FeedPresenter extends PlaceSupportPresenter<IFeedView> {
 
         mFeedSources.clear();
         mFeedSources.addAll(createDefaultFeedSources());
-        mFeedSources.addAll(sources);
+//        mFeedSources.addAll(sources);
 
         int selected = refreshFeedSourcesSelection();
 
@@ -332,8 +332,8 @@ public class FeedPresenter extends PlaceSupportPresenter<IFeedView> {
         List<FeedSource> data = new ArrayList<>(4);
         data.add(new FeedSource(null, R.string.news_feed));
         data.add(new FeedSource("friends", R.string.friends));
-        data.add(new FeedSource("groups", R.string.groups));
-        data.add(new FeedSource("following", R.string.subscriptions));
+//        data.add(new FeedSource("groups", R.string.groups));
+//        data.add(new FeedSource("following", R.string.subscriptions));
         return data;
     }
 
