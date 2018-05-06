@@ -105,6 +105,7 @@
         <item name="toolbarCopyIcon">@drawable/content_copy_grey600</item>
         <item name="toolbarDeleteIcon">@drawable/delete_grey600</item>
         <item name="toolbarUpIcon">@drawable/chevron_up_grey</item>
+        <item name="toolbarReloadIcon">@drawable/reload_grey</item>
         <item name="toolbarGraphicIcon">@drawable/chart_bar_grey600</item>
         <item name="toolbarEditIcon">@drawable/pencil_grey600</item>
         <item name="toolbarForwardIcon">@drawable/forward_grey600</item>

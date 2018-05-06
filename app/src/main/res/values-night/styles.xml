@@ -38,6 +38,7 @@
         <item name="toolbarCopyIcon">@drawable/content_copy</item>
         <item name="toolbarDeleteIcon">@drawable/delete</item>
         <item name="toolbarUpIcon">@drawable/chevron_up</item>
+        <item name="toolbarReloadIcon">@drawable/reload</item>
         <item name="toolbarGraphicIcon">@drawable/chart_bar</item>
         <item name="toolbarEditIcon">@drawable/pencil</item>
         <item name="toolbarForwardIcon">@drawable/forward</item>
