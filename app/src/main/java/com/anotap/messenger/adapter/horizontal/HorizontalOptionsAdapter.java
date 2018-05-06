@@ -20,7 +20,7 @@ public class HorizontalOptionsAdapter<T extends Entry> extends RecyclerBindableA
         final T item = getItem(position);
 
         String title = item.getTitle(holder.itemView.getContext());
-        String targetTitle = title.startsWith("#") ? title : "#" + title;
+        String targetTitle = /*title.startsWith("#") ? title : "#" +*/ title;
 
         holder.button.setText(targetTitle);
         holder.button.setActive(item.isActive());
