@@ -1190,5 +1190,6 @@
     <string name="need_proxy">Do you need a proxy connection?\n(actual for the residents of Ukraine)</string>
     <string name="yes">yes</string>
     <string name="no">no</string>
+    <string name="error_retrieving_proxy">Error loading proxy</string>
 
 </resources>

@@ -36,6 +36,7 @@ public class ProxySettingsImpl implements IProxySettings {
     private final PublishSubject<ProxyConfig> addPublisher;
     private final PublishSubject<ProxyConfig> deletePublisher;
     private final PublishSubject<Optional<ProxyConfig>> activePublisher;
+    private ProxyConfig activeProxy;
 
     public ProxySettingsImpl(Context context) {
         this.preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
@@ -107,20 +108,21 @@ public class ProxySettingsImpl implements IProxySettings {
 
     @Override
     public ProxyConfig getActiveProxy() {
-
-        //TODO: here we should build and return the ProxyConfig
         boolean active = preferences.getBoolean(KEY_ACTIVE, false);
-
-        return active ? new ProxyConfig(0, "188.130.138.95", 8080) : null;
+        if (activeProxy == null) {
+            activeProxy = new ProxyConfig(0, "188.130.138.95", 8080);
+        }
+        return active ? activeProxy : null;
     }
 
     @Override
     public void setActive(ProxyConfig config) {
-        preferences.edit()
-                .putString(KEY_ACTIVE, Objects.isNull(config) ? null : GSON.toJson(config))
-                .apply();
-
-        activePublisher.onNext(Optional.wrap(config));
+        activeProxy = config;
+//        preferences.edit()
+//                .putString(KEY_ACTIVE, Objects.isNull(config) ? null : GSON.toJson(config))
+//                .apply();
+//
+//        activePublisher.onNext(Optional.wrap(config));
     }
 
     @Override
