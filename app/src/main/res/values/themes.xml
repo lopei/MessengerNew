@@ -50,8 +50,8 @@
 
     <!-- Indigo -->
     <style name="App.DayNight.Indigo" parent="Base.App.DayNight">
-        <item name="colorPrimary">#3F51B5</item>
-        <item name="colorPrimaryDark">#303F9F</item>
+        <item name="colorPrimary">#507299</item>
+        <item name="colorPrimaryDark">#365579</item>
         <item name="colorAccent">#E91E63</item>
 
         <item name="icon_color_active">#3F51B5</item>
