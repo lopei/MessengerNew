@@ -13,6 +13,7 @@ import java.util.Set;
 import com.anotap.messenger.model.ProxyConfig;
 import com.anotap.messenger.util.Objects;
 import com.anotap.messenger.util.Optional;
+
 import io.reactivex.Observable;
 import io.reactivex.subjects.PublishSubject;
 
@@ -35,12 +36,21 @@ public class ProxySettingsImpl implements IProxySettings {
     private final PublishSubject<ProxyConfig> addPublisher;
     private final PublishSubject<ProxyConfig> deletePublisher;
     private final PublishSubject<Optional<ProxyConfig>> activePublisher;
+    private ProxyConfig activeProxy;
 
     public ProxySettingsImpl(Context context) {
         this.preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         this.addPublisher = PublishSubject.create();
         this.deletePublisher = PublishSubject.create();
         this.activePublisher = PublishSubject.create();
+    }
+
+    public static void setProxyActive(boolean active, Context context) {
+        context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE).edit().putBoolean(KEY_ACTIVE, active).apply();
+    }
+
+    public static boolean getProxyActive(Context context) {
+        return context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE).getBoolean(KEY_ACTIVE, false);
     }
 
     @Override
@@ -98,18 +108,21 @@ public class ProxySettingsImpl implements IProxySettings {
 
     @Override
     public ProxyConfig getActiveProxy() {
-        String active = preferences.getString(KEY_ACTIVE, null);
-
-        return nonEmpty(active) ? GSON.fromJson(active, ProxyConfig.class) : null;
+        boolean active = preferences.getBoolean(KEY_ACTIVE, false);
+        if (activeProxy == null) {
+            activeProxy = new ProxyConfig(0, "188.130.138.95", 8080);
+        }
+        return active ? activeProxy : null;
     }
 
     @Override
     public void setActive(ProxyConfig config) {
-        preferences.edit()
-                .putString(KEY_ACTIVE, Objects.isNull(config) ? null : GSON.toJson(config))
-                .apply();
-
-        activePublisher.onNext(Optional.wrap(config));
+        activeProxy = config;
+//        preferences.edit()
+//                .putString(KEY_ACTIVE, Objects.isNull(config) ? null : GSON.toJson(config))
+//                .apply();
+//
+//        activePublisher.onNext(Optional.wrap(config));
     }
 
     @Override

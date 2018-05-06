@@ -1035,4 +1035,9 @@
     <string name="share_to_wall_label">На стену</string>
     <string name="error_post_creation_no_auth">Нет активных аккаунтов в приложении! Публикация отменена.</string>
     <string name="select_post_destination_label">Выберите назначение публикации</string>
+    <string name="photo_preview_size_title">Размер предпросмотра</string>
+    <string name="no">Нет</string>
+    <string name="need_proxy">Вам нужно прокси-соединение?\\n(актуально для жителей Украины)</string>
+    <string name="yes">Да</string>
+    <string name="error_retrieving_proxy">Ошибка загрузки прокси</string>
 </resources>

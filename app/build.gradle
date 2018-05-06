@@ -1,6 +1,20 @@
 apply plugin: 'com.android.application'
 
+def versionMajor = 1
+def versionMinor = 0
+def versionPatch = 0
+def versionBuild = 0
+
 android {
+    signingConfigs {
+        release {
+            keyAlias 'messenger'
+            keyPassword 'sasaki570030'
+            storeFile file('../keystore.jks')
+            storePassword 'sasaki570030'
+        }
+    }
+
     packagingOptions {
         exclude 'META-INF/notice.txt'
         exclude 'META-INF/license.txt'
@@ -15,8 +29,8 @@ android {
         applicationId "com.anotap.messenger"
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 40700
-        versionName '4_0_7'
+        versionCode versionMajor * 10000 + versionMinor * 1000 + versionPatch * 100 + versionBuild
+        versionName "${versionMajor}.${versionMinor}.${versionPatch}.${versionBuild}"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -37,11 +51,21 @@ android {
             multiDexEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
 
         debug {
             minifyEnabled false
             multiDexEnabled true
+        }
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def file = output.outputFile
+            outputFileName = new File(file.name.replace(".apk", "-"
+                    + versionName
+                    + ".apk").replace("app", "messengernew"))
         }
     }
 
@@ -142,11 +166,14 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'io.reactivex.rxjava2:rxjava:2.1.9'
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    compile 'io.reactivex:rxjava:1.1.7'
+    compile 'io.reactivex:rxandroid:1.2.1'
     implementation files('libs/YouTubeAndroidPlayerApi.jar')
     implementation project(':mvpcore')
     implementation 'com.squareup.retrofit2:retrofit:2.2.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.2.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.2.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.2.0'
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
     implementation "com.google.firebase:firebase-crash:$firebaseLibraryVersion"

@@ -77,6 +77,8 @@
     <dimen name="online_dot_size_big">24dp</dimen>
 
     <dimen name="newsfeed_comments_card_side_margin">0dp</dimen>
+    <dimen name="icon_world">64dp</dimen>
+    <dimen name="margin_large">18dp</dimen>
 
     <integer name="attchemtns_editor_column_count">3</integer>
 </resources>
