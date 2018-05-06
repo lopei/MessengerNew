@@ -282,7 +282,7 @@ public class NavigationFragment extends BaseFragment implements MenuListAdapter.
             items.add(SECTION_ITEM_BY_FULL_APP);
         }
 
-        items.add(SECTION_ITEM_ACCOUNTS);
+//        items.add(SECTION_ITEM_ACCOUNTS);
         return items;
     }
 
