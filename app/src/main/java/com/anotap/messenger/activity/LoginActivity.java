@@ -17,11 +17,16 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.anotap.messenger.Extra;
+import com.anotap.messenger.Injection;
 import com.anotap.messenger.R;
 import com.anotap.messenger.api.Auth;
 import com.anotap.messenger.api.util.VKStringUtils;
+import com.anotap.messenger.dialog.DirectAuthDialog;
 import com.anotap.messenger.model.Token;
+import com.anotap.messenger.settings.IProxySettings;
+import com.anotap.messenger.settings.ProxySettingsImpl;
 import com.anotap.messenger.util.Logger;
+import com.anotap.messenger.util.ProxyUtil;
 import com.anotap.messenger.util.Utils;
 
 import static com.anotap.messenger.util.Utils.nonEmpty;
@@ -29,14 +34,20 @@ import static com.anotap.messenger.util.Utils.nonEmpty;
 public class LoginActivity extends Activity {
 
     private static final String TAG = LoginActivity.class.getSimpleName();
+    private IProxySettings proxySettings;
 
     @SuppressLint("SetJavaScriptEnabled")
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        proxySettings = Injection.provideProxySettings();
 
         WebView webview = findViewById(R.id.vkontakteview);
+        if(ProxySettingsImpl.getProxyActive(this)) {
+            ProxyUtil.setProxy(webview, proxySettings.getActiveProxy().getAddress(), proxySettings.getActiveProxy().getPort());
+        }
+
         webview.getSettings().setJavaScriptEnabled(true);
         webview.clearCache(true);
 
@@ -134,6 +145,7 @@ public class LoginActivity extends Activity {
                         intent.putExtra(Extra.TOKEN, accessToken);
                         intent.putExtra(Extra.USER_ID, Integer.parseInt(userId));
                     }
+                    intent.setAction(DirectAuthDialog.ACTION_LOGIN_COMPLETE);
 
                     setResult(RESULT_OK, intent);
                 }

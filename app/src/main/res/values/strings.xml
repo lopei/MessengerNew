@@ -1187,5 +1187,8 @@
     <string name="select_post_destination_label">Select post destination</string>
     <string name="gif" translatable="false">GIF %1$s</string>
     <string name="photo_preview_size_title">Photo preview size</string>
+    <string name="need_proxy">Do you need a proxy connection?\n(actual for the residents of Ukraine)</string>
+    <string name="yes">yes</string>
+    <string name="no">no</string>
 
 </resources>
