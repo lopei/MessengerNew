@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <string name="app_name">Phoenix Lite</string>
+    <string name="app_name" translatable="false">Eagle</string>
 
     <!-- Dialogs-->
     <string name="dialogs">Conversations</string>
@@ -1158,7 +1158,7 @@
     <string name="error_login_by_fingerprint_not_allowed">Login via fingerprint is not allowed</string>
 
     <string name="source_code_title" translatable="false">Source code</string>
-    <string name="source_code_link" translatable="false">https://github.com/PhoenixDevTeam/Phoenix-for-VK</string>
+    <string name="source_code_link" translatable="false">https://github.com/lopei/MessengerNew/</string>
     <string name="birthdays">Birthdays</string>
     <string name="error_key_exchange_invalid_session_state">Invalid session state</string>
     <string name="error_key_exchange_cancelled_by_user">Key exchange was cancelled by user</string>
@@ -1190,6 +1190,6 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="error_retrieving_proxy">Error loading proxy</string>
-    <string name="need_proxy">Do you need a proxy connection?\\n(actual for the residents of Ukraine)</string>
+    <string name="need_proxy">Do you need a proxy connection?\n(actual for the residents of Ukraine)</string>
 
 </resources>

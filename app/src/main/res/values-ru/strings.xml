@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Phoenix Lite</string>
-
     <!-- Dialogs-->
     <string name="dialogs">Диалоги</string>
     <string name="dialog_day_today">Сегодня</string>
@@ -1037,7 +1035,7 @@
     <string name="select_post_destination_label">Выберите назначение публикации</string>
     <string name="photo_preview_size_title">Размер предпросмотра</string>
     <string name="no">Нет</string>
-    <string name="need_proxy">Вам нужно прокси-соединение?\\n(актуально для жителей Украины)</string>
+    <string name="need_proxy">Вам нужно прокси-соединение?\n(актуально для жителей Украины)</string>
     <string name="yes">Да</string>
     <string name="error_retrieving_proxy">Ошибка загрузки прокси</string>
 </resources>

@@ -10,7 +10,7 @@
             android:title="@string/high_notif_priority_title" />
 
         <SwitchPreference
-            android:defaultValue="false"
+            android:defaultValue="true"
             android:key="quick_reply_immediately"
             android:summary="@string/quick_reply_summary"
             android:title="@string/quick_reply" />

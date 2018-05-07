@@ -4,8 +4,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 
-import com.google.android.gms.gcm.GcmListenerService;
-
 import com.anotap.messenger.db.Stores;
 import com.anotap.messenger.push.CollapseKey;
 import com.anotap.messenger.push.IPushRegistrationResolver;
@@ -26,26 +24,25 @@ import com.anotap.messenger.settings.ISettings;
 import com.anotap.messenger.settings.Settings;
 import com.anotap.messenger.util.Logger;
 import com.anotap.messenger.util.PersistentLogger;
+import com.google.firebase.messaging.FirebaseMessagingService;
+import com.google.firebase.messaging.RemoteMessage;
+
+import java.util.Map;
 
 import static com.anotap.messenger.util.Utils.isEmpty;
 
-public class MyGcmListenerService extends GcmListenerService {
-
-    private static final String TAG = "MyGcmListenerService";
-
-    /**
-     * Called when message is received.
-     *
-     * @param from   SenderID of the sender.
-     * @param extras Data bundle containing message data as key/value pairs.
-     *               For Set of keys use data.keySet().
-     */
+public class MyGcmListenerService extends FirebaseMessagingService {
     @Override
-    public void onMessageReceived(String from, Bundle extras) {
+    public void onMessageReceived(RemoteMessage remoteMessage) {
+        Bundle extras = new Bundle();
+        for (String key : remoteMessage.getData().keySet()) {
+            extras.putString(key, remoteMessage.getData().get(key));
+        }
+
         Context context = getApplicationContext();
         String collapseKey = extras.getString("collapse_key");
 
-        Logger.d(TAG, "onMessage, from: " + from + ", collapseKey: " + collapseKey + ", extras: " + extras);
+        Logger.d(TAG, "onMessage, from: " + remoteMessage.getFrom() + ", collapseKey: " + collapseKey + ", extras: " + extras);
         if (isEmpty(collapseKey)) {
             return;
         }
@@ -122,6 +119,17 @@ public class MyGcmListenerService extends GcmListenerService {
                 break;
         }
     }
+
+    private static final String TAG = "MyGcmListenerService";
+
+    /**
+     * Called when message is received.
+     *
+     * @param from   SenderID of the sender.
+     * @param extras Data bundle containing message data as key/value pairs.
+     *               For Set of keys use data.keySet().
+     */
+
 
     private void fireNewMessage(int accountId, final @NonNull GCMMessage dto) {
         try {

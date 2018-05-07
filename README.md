@@ -5,7 +5,7 @@ First open-sourced VK client for Android inspired by Material Design.
 <img src="Screenshots.jpg"/>
 
 <b>Available at Google Play</b><br>
-  <b>Full:</b> https://play.google.com/store/apps/details?id=biz.dealnote.phoenix <br>
+  <b>Full:</b> https://play.google.com/store/apps/details?id=com.anotap.messenger <br>
   <b>Lite:</b> https://play.google.com/store/apps/details?id=com.anotap.messenger
 
 <b>Build guide:</b>

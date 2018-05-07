@@ -9,30 +9,31 @@ import java.lang.annotation.RetentionPolicy;
  * Created by admin on 08.10.2016.
  * phoenix
  */
-@IntDef({SwitchableCategory.FRIENDS,
+
+@IntDef({SwitchableCategory.FEED,
         SwitchableCategory.DIALOGS,
-        SwitchableCategory.FEED,
         SwitchableCategory.FEEDBACK,
+        SwitchableCategory.FRIENDS,
         SwitchableCategory.GROUPS,
         SwitchableCategory.PHOTOS,
         SwitchableCategory.VIDEOS,
-        SwitchableCategory.MUSIC,
         SwitchableCategory.DOCS,
         SwitchableCategory.BOOKMARKS,
         SwitchableCategory.SEARCH,
-        SwitchableCategory.NEWSFEED_COMMENTS})
+        SwitchableCategory.NEWSFEED_COMMENTS/*,
+        SwitchableCategory.MUSIC*/})
 @Retention(RetentionPolicy.SOURCE)
 public @interface SwitchableCategory {
-    int FRIENDS = 1;
+    int FEED = 1;
     int DIALOGS = 2;
-    int FEED = 3;
-    int FEEDBACK = 4;
-    int NEWSFEED_COMMENTS = 12;
+    int FEEDBACK = 3;
+    int FRIENDS = 4;
     int GROUPS = 5;
     int PHOTOS = 6;
     int VIDEOS = 7;
-    int MUSIC = 8;
-    int DOCS = 9;
-    int BOOKMARKS = 10;
-    int SEARCH = 11;
+    int DOCS = 8;
+    int BOOKMARKS = 9;
+    int SEARCH = 10;
+    int NEWSFEED_COMMENTS = 11;
+    /*int MUSIC = 12;*/
 }

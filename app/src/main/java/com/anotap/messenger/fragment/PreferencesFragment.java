@@ -81,10 +81,10 @@ import static com.anotap.messenger.util.Utils.safelyRecycle;
 
 public class PreferencesFragment extends PreferenceFragment {
 
-    public static final int APP_GROUP_ID = 72124992;
+    public static final int APP_GROUP_ID = 147071985;
 
-    public static final String FULL_APP_URL = "https://play.google.com/store/apps/details?id=biz.dealnote.phoenix";
-    private static final String ALBUM_NAME = "Phoenix";
+    public static final String FULL_APP_URL = "https://play.google.com/store/apps/details?id=com.anotap.messenger";
+    private static final String ALBUM_NAME = "Eagle";
     private static final String APP_URL = "https://play.google.com/store/apps/details?id=com.anotap.messenger";
 
     public static final String KEY_DEFAULT_CATEGORY = "default_category";
@@ -343,11 +343,11 @@ public class PreferencesFragment extends PreferenceFragment {
                     return true;
                 });
 
-        findPreference("proxy")
+     /*   findPreference("proxy")
                 .setOnPreferenceClickListener(preference -> {
                     startActivity(new Intent(getActivity(), ProxyManagerActivity.class));
                     return true;
-                });
+                });*/
 
         findPreference("source_code")
                 .setOnPreferenceClickListener(preference -> {
@@ -606,8 +606,8 @@ public class PreferencesFragment extends PreferenceFragment {
         enabledCategoriesName.add(getString(R.string.last_closed_page));
         enabledCategoriesValues.add("last_closed");
 
-        if (drawerSettings.isCategoryEnabled(SwitchableCategory.FRIENDS)) {
-            enabledCategoriesName.add(getString(R.string.friends));
+        if (drawerSettings.isCategoryEnabled(SwitchableCategory.FEED)) {
+            enabledCategoriesName.add(getString(R.string.feed));
             enabledCategoriesValues.add("1");
         }
 
@@ -616,19 +616,14 @@ public class PreferencesFragment extends PreferenceFragment {
             enabledCategoriesValues.add("2");
         }
 
-        if (drawerSettings.isCategoryEnabled(SwitchableCategory.FEED)) {
-            enabledCategoriesName.add(getString(R.string.feed));
+        if (drawerSettings.isCategoryEnabled(SwitchableCategory.FEEDBACK)) {
+            enabledCategoriesName.add(getString(R.string.drawer_feedback));
             enabledCategoriesValues.add("3");
         }
 
-        if (drawerSettings.isCategoryEnabled(SwitchableCategory.FEEDBACK)) {
-            enabledCategoriesName.add(getString(R.string.drawer_feedback));
+        if (drawerSettings.isCategoryEnabled(SwitchableCategory.FRIENDS)) {
+            enabledCategoriesName.add(getString(R.string.friends));
             enabledCategoriesValues.add("4");
-        }
-
-        if (drawerSettings.isCategoryEnabled(SwitchableCategory.NEWSFEED_COMMENTS)) {
-            enabledCategoriesName.add(getString(R.string.drawer_newsfeed_comments));
-            enabledCategoriesValues.add("12");
         }
 
         if (drawerSettings.isCategoryEnabled(SwitchableCategory.GROUPS)) {
@@ -646,20 +641,25 @@ public class PreferencesFragment extends PreferenceFragment {
             enabledCategoriesValues.add("7");
         }
 
-        if (drawerSettings.isCategoryEnabled(SwitchableCategory.MUSIC)) {
-            enabledCategoriesName.add(getString(R.string.music));
-            enabledCategoriesValues.add("8");
-        }
-
         if (drawerSettings.isCategoryEnabled(SwitchableCategory.DOCS)) {
             enabledCategoriesName.add(getString(R.string.attachment_documents));
-            enabledCategoriesValues.add("9");
+            enabledCategoriesValues.add("8");
         }
 
         if (drawerSettings.isCategoryEnabled(SwitchableCategory.BOOKMARKS)) {
             enabledCategoriesName.add(getString(R.string.bookmarks));
-            enabledCategoriesValues.add("10");
+            enabledCategoriesValues.add("9");
         }
+
+        if (drawerSettings.isCategoryEnabled(SwitchableCategory.NEWSFEED_COMMENTS)) {
+            enabledCategoriesName.add(getString(R.string.drawer_newsfeed_comments));
+            enabledCategoriesValues.add("11");
+        }
+
+       /* if (drawerSettings.isCategoryEnabled(SwitchableCategory.MUSIC)) {
+            enabledCategoriesName.add(getString(R.string.music));
+            enabledCategoriesValues.add("8");
+        }*/
 
         lp.setEntries(enabledCategoriesName.toArray(new CharSequence[enabledCategoriesName.size()]));
         lp.setEntryValues(enabledCategoriesValues.toArray(new CharSequence[enabledCategoriesValues.size()]));

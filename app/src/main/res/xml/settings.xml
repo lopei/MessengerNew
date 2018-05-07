@@ -32,9 +32,9 @@
             android:key="photo_preview_size"
             android:title="@string/photo_preview_size_title" />
 
-        <Preference
+       <!-- <Preference
             android:key="proxy"
-            android:title="@string/http_proxy" />
+            android:title="@string/http_proxy" />-->
 
         <Preference
             android:key="notifications"
@@ -94,12 +94,12 @@
             android:key="navigation_colored"
             android:title="@string/color_navigation_bar" />
 
-        <ListPreference
+      <!--  <ListPreference
             android:defaultValue="1"
             android:entries="@array/array_chat_background_names"
             android:entryValues="@array/array_chat_background_items"
             android:key="chat_background"
-            android:title="@string/chat_background" />
+            android:title="@string/chat_background" />-->
 
         <Preference
             android:key="avatar_style"

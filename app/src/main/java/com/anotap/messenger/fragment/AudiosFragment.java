@@ -93,10 +93,10 @@ public class AudiosFragment extends BasePresenterFragment<AudiosPresenter, IAudi
             actionBar.setSubtitle(null);
         }
 
-        if (getActivity() instanceof OnSectionResumeCallback) {
+      /*  if (getActivity() instanceof OnSectionResumeCallback) {
             ((OnSectionResumeCallback) getActivity()).onSectionResume(NavigationFragment.SECTION_ITEM_AUDIOS);
         }
-
+*/
         new ActivityFeatures.Builder()
                 .begin()
                 .setBlockNavigationDrawer(false)

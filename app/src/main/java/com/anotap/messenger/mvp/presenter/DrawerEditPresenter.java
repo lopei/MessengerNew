@@ -49,8 +49,8 @@ public class DrawerEditPresenter extends AbsPresenter<IDrawerEditView> {
                 return R.string.photos;
             case SwitchableCategory.VIDEOS:
                 return R.string.videos;
-            case SwitchableCategory.MUSIC:
-                return R.string.music;
+            /*case SwitchableCategory.MUSIC:
+                return R.string.music;*/
             case SwitchableCategory.DOCS:
                 return R.string.documents;
             case SwitchableCategory.BOOKMARKS:

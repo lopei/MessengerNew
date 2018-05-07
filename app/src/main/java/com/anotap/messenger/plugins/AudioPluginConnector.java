@@ -20,7 +20,7 @@ import static com.anotap.messenger.util.Objects.isNull;
  */
 public class AudioPluginConnector implements IAudioPluginConnector {
 
-    private static final String AUTHORITY = "biz.dealnote.phoenix.AudioProvider";
+    private static final String AUTHORITY = "com.anotap.messenger.AudioProvider";
 
     private final Context app;
 

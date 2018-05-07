@@ -24,12 +24,12 @@ public class CurrentTheme {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(activity);
         String page = preferences.getString(KEY_CHAT_BACKGROUND, "1");
         switch (page){
-            case "1":
+           /* case "1":
                 return CurrentTheme.getDrawableFromAttribute(activity, R.attr.chat_background_cookies);
             case "2":
                 return CurrentTheme.getDrawableFromAttribute(activity, R.attr.chat_background_lines);
             //case "3":
-            //    return CurrentTheme.getDrawableFromAttribute(activity, R.attr.chat_background_circular);
+            //    return CurrentTheme.getDrawableFromAttribute(activity, R.attr.chat_background_circular);*/
             default: //"0
                 int color = CurrentTheme.getColorFromAttrs(activity, R.attr.messages_background_color, Color.WHITE);
                 return new ColorDrawable(color);

@@ -15,7 +15,7 @@ import static com.anotap.messenger.model.SwitchableCategory.FEED;
 import static com.anotap.messenger.model.SwitchableCategory.FEEDBACK;
 import static com.anotap.messenger.model.SwitchableCategory.FRIENDS;
 import static com.anotap.messenger.model.SwitchableCategory.GROUPS;
-import static com.anotap.messenger.model.SwitchableCategory.MUSIC;
+/*import static com.anotap.messenger.model.SwitchableCategory.MUSIC;*/
 import static com.anotap.messenger.model.SwitchableCategory.NEWSFEED_COMMENTS;
 import static com.anotap.messenger.model.SwitchableCategory.PHOTOS;
 import static com.anotap.messenger.model.SwitchableCategory.SEARCH;
@@ -69,7 +69,9 @@ class DrawerSettings implements ISettings.IDrawerSettings {
     @Override
     public int[] getCategoriesOrder() {
         @SwitchableCategory
-        int[] all = {FRIENDS, DIALOGS, FEED, FEEDBACK, NEWSFEED_COMMENTS, GROUPS, PHOTOS, VIDEOS, MUSIC, DOCS, BOOKMARKS, SEARCH};
+        int[] all = {FEED, DIALOGS, FEEDBACK, FRIENDS, GROUPS, PHOTOS, VIDEOS, DOCS, BOOKMARKS, SEARCH, NEWSFEED_COMMENTS/*, MUSIC*/};
+
+        //nt[] all = {FRIENDS, DIALOGS, FEED, FEEDBACK, NEWSFEED_COMMENTS, GROUPS, PHOTOS, VIDEOS, MUSIC, DOCS, BOOKMARKS, SEARCH};
 
         String line = PreferenceManager.getDefaultSharedPreferences(app).getString("drawer_categories_order", null);
         String[] parts = isEmpty(line) ? new String[0] : line.split("-");

@@ -16,12 +16,12 @@
 
 package com.anotap.messenger;
 
-import com.google.android.gms.iid.InstanceIDListenerService;
 
 import com.anotap.messenger.push.IPushRegistrationResolver;
 import com.anotap.messenger.util.RxUtils;
+import com.google.firebase.iid.FirebaseInstanceIdService;
 
-public class MyInstanceIDListenerService extends InstanceIDListenerService {
+public class MyInstanceIDListenerService extends FirebaseInstanceIdService {
 
     /**
      * Called if InstanceID token is updated. This may occur if the security of

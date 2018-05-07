@@ -2,12 +2,10 @@ package com.anotap.messenger.push;
 
 import android.content.Context;
 
-import com.google.android.gms.gcm.GoogleCloudMessaging;
-import com.google.android.gms.iid.InstanceID;
-
 import java.io.IOException;
 
 import com.anotap.messenger.Constants;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 /**
  * Created by admin on 07.10.2017.
@@ -23,7 +21,6 @@ public class GcmTokenProvider implements IGcmTokenProvider {
 
     @Override
     public String getToken() throws IOException {
-        InstanceID instanceID = InstanceID.getInstance(app);
-        return instanceID.getToken(Constants.SENDER_ID, GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
+        return FirebaseInstanceId.getInstance().getToken();
     }
 }

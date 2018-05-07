@@ -16,13 +16,22 @@ import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.SparseArray;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.anotap.messenger.R;
+import com.anotap.messenger.api.model.Identificable;
+import com.anotap.messenger.model.ISelectable;
+import com.anotap.messenger.model.ISomeones;
+import com.anotap.messenger.settings.CurrentTheme;
 
 import java.io.Closeable;
 import java.io.IOException;
@@ -36,10 +45,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import com.anotap.messenger.R;
-import com.anotap.messenger.api.model.Identificable;
-import com.anotap.messenger.model.ISelectable;
-import com.anotap.messenger.model.ISomeones;
 import io.reactivex.disposables.Disposable;
 
 import static com.anotap.messenger.util.Objects.isNull;
@@ -292,7 +297,7 @@ public class Utils {
      *
      * @param tokens an array strings to be joined
      */
-    public static String stringJoin(CharSequence delimiter, String ... tokens) {
+    public static String stringJoin(CharSequence delimiter, String... tokens) {
         StringBuilder sb = new StringBuilder();
 
         boolean firstTime = true;
@@ -608,7 +613,7 @@ public class Utils {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1;
     }
 
-    public static boolean hasOreo(){
+    public static boolean hasOreo() {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.O;
     }
 
@@ -834,6 +839,15 @@ public class Utils {
     }
 
     private Utils() {
+    }
+
+    public static void colorStatusBar(Activity activity, int color) {
+        if (Utils.hasLollipop()) {
+            Window w = activity.getWindow();
+            w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            w.setStatusBarColor(color);
+        }
     }
 
     public static int getStatusBarHeight(Context context) {

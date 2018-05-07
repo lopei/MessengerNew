@@ -22,6 +22,7 @@ import com.anotap.messenger.fragment.AccountsFragment;
 import com.anotap.messenger.fragment.ProxyFragment;
 import com.anotap.messenger.model.Account;
 import com.anotap.messenger.settings.CurrentTheme;
+import com.anotap.messenger.settings.ISettings;
 import com.anotap.messenger.settings.Settings;
 import com.anotap.messenger.util.RxUtils;
 import com.anotap.messenger.util.Utils;
@@ -87,7 +88,14 @@ public class AccountsActivity extends AppCompatActivity {
             fragment.setListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startLoginViaWeb();
+                    boolean authValid = Settings.get()
+                            .accounts()
+                            .getCurrent() != ISettings.IAccountsSettings.INVALID_ID;
+                    if (authValid) {
+                        finish();
+                    } else {
+                        startLoginViaWeb();
+                    }
                 }
             });
 

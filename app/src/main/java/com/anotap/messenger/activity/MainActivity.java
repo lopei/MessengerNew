@@ -25,6 +25,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ActionMode;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -32,15 +33,12 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GoogleApiAvailability;
-
-import java.util.ArrayList;
-import java.util.Collections;
-
 import com.anotap.messenger.Extra;
 import com.anotap.messenger.Injection;
 import com.anotap.messenger.R;
+import com.anotap.messenger.api.AnotapWebService;
+import com.anotap.messenger.api.model.anotap.ProxyResponse;
+import com.anotap.messenger.api.util.RxUtil;
 import com.anotap.messenger.dialog.ResolveDomainDialog;
 import com.anotap.messenger.fragment.AbsWallFragment;
 import com.anotap.messenger.fragment.AudioPlayerFragment;
@@ -103,6 +101,7 @@ import com.anotap.messenger.model.Comment;
 import com.anotap.messenger.model.Document;
 import com.anotap.messenger.model.Manager;
 import com.anotap.messenger.model.Peer;
+import com.anotap.messenger.model.ProxyConfig;
 import com.anotap.messenger.model.User;
 import com.anotap.messenger.model.UserDetails;
 import com.anotap.messenger.model.drawer.AbsDrawerItem;
@@ -129,7 +128,14 @@ import com.anotap.messenger.util.Pair;
 import com.anotap.messenger.util.RxUtils;
 import com.anotap.messenger.util.StatusbarUtil;
 import com.anotap.messenger.util.Utils;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
+
+import java.util.ArrayList;
+import java.util.Collections;
+
 import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.functions.Consumer;
 
 import static com.anotap.messenger.util.Objects.isNull;
 import static com.anotap.messenger.util.Objects.nonNull;
@@ -184,6 +190,11 @@ public class MainActivity extends AppCompatActivity implements NavigationFragmen
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getDelegate().applyDayNight();
+
+        if (Injection.provideProxySettings().getActiveProxy() != null) {
+            logProxy();
+            updateProxyFromApi();
+        }
 
         mCompositeDisposable.add(Settings.get()
                 .accounts()
@@ -256,6 +267,23 @@ public class MainActivity extends AppCompatActivity implements NavigationFragmen
         Logger.d(TAG, "" + (getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK));
     }
 
+    private void logProxy() {
+        Log.e("Proxy", Injection.provideProxySettings().getActiveProxy().getAddress() + " " +
+                Injection.provideProxySettings().getActiveProxy().getPort());
+    }
+
+    private void updateProxyFromApi() {
+        if (Injection.provideProxySettings().getActiveProxy() != null) {
+            RxUtil.networkConsumer(AnotapWebService.service.getProxy(), new Consumer<ProxyResponse>() {
+                @Override
+                public void accept(ProxyResponse proxyResponse) {
+                    Injection.provideProxySettings().setActive(new ProxyConfig(0, proxyResponse.getProxy().getIp(), proxyResponse.getProxy().getPort()));
+                    logProxy();
+                }
+            });
+        }
+    }
+
     private void startEnterPinActivity() {
         Intent intent = new Intent(this, EnterPinActivity.getClass(this));
         startActivityForResult(intent, REQUEST_ENTER_PIN);
@@ -263,7 +291,7 @@ public class MainActivity extends AppCompatActivity implements NavigationFragmen
 
     private void checkGCMRegistration() {
         if (!checkPlayServices(this)) {
-            Utils.showRedTopToast(this, R.string.this_device_does_not_support_gcm);
+            //Utils.showRedTopToast(this, R.string.this_device_does_not_support_gcm);
             return;
         }
 
@@ -291,29 +319,6 @@ public class MainActivity extends AppCompatActivity implements NavigationFragmen
     private void resolveToolbarNavigationIcon() {
         if (isNull(mToolbar)) return;
 
-        final ActionBar actionBar = getSupportActionBar();
-
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.app_name, R.string.app_name)
-        {
-
-            public void onDrawerClosed(View view)
-            {
-                supportInvalidateOptionsMenu();
-                //drawerOpened = false;
-            }
-
-            public void onDrawerOpened(View drawerView)
-            {
-                supportInvalidateOptionsMenu();
-                //drawerOpened = true;
-            }
-        };
-        mDrawerToggle.setDrawerIndicatorEnabled(true);
-        mDrawerLayout.addDrawerListener(mDrawerToggle);
-        mDrawerToggle.syncState();
-
-
         FragmentManager manager = getSupportFragmentManager();
         if (manager.getBackStackEntryCount() > 1) {
             Drawable backIcon = getFrontFragement() instanceof PhotoPagerFragment ||
@@ -321,10 +326,10 @@ public class MainActivity extends AppCompatActivity implements NavigationFragmen
                     ContextCompat.getDrawable(this, R.drawable.arrow_left) :
                     CurrentTheme.getDrawableFromAttribute(this, R.attr.toolbarBackIcon);
 
-            //mToolbar.setNavigationIcon(backIcon);
+            mToolbar.setNavigationIcon(backIcon);
             mToolbar.setNavigationOnClickListener(v -> onBackPressed());
         } else {
-            //mToolbar.setNavigationIcon(CurrentTheme.getDrawableFromAttribute(this, R.attr.toolbarDrawerIcon));
+            mToolbar.setNavigationIcon(CurrentTheme.getDrawableFromAttribute(this, R.attr.toolbarDrawerIcon));
             mToolbar.setNavigationOnClickListener(v -> {
                 if (mDrawerLayout.getDrawerLockMode(GravityCompat.START) == DrawerLayout.LOCK_MODE_UNLOCKED) {
                     NavigationFragment navigationFragment = getNavigationFragment();
@@ -1257,17 +1262,15 @@ public class MainActivity extends AppCompatActivity implements NavigationFragmen
         }
     }
 
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState)
-    {
+/*    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         mDrawerToggle.syncState();
     }
 
     @Override
-    public void onConfigurationChanged(Configuration newConfig)
-    {
+    public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         mDrawerToggle.onConfigurationChanged(newConfig);
-    }
+    }*/
 }

@@ -30,7 +30,7 @@
         <item name="toolbarElevation">@dimen/toolbar_with_elevation</item>
         <item name="toolbarAppStyle">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
         <item name="toolbarPopupStyle">@style/ThemeOverlay.AppCompat.Light</item>
-        <item name="toolbarDrawerIcon">@drawable/phoenix_drawer</item>
+        <item name="toolbarDrawerIcon">@drawable/ic_menu_white_24dp</item>
         <item name="toolbarBackIcon">@drawable/arrow_left</item>
         <item name="toolbarCloseIcon">@drawable/close</item>
         <item name="toolbarOKIcon">@drawable/check</item>

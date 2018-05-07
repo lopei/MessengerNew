@@ -64,36 +64,36 @@ public class MusicPlaybackService extends Service {
     private static final String TAG = "MusicPlaybackService";
     private static final boolean D = BuildConfig.DEBUG;
 
-    public static final String PLAYSTATE_CHANGED = "biz.dealnote.phoenix.player.playstatechanged";
-    public static final String POSITION_CHANGED = "biz.dealnote.phoenix.player.positionchanged";
-    public static final String META_CHANGED = "biz.dealnote.phoenix.player.metachanged";
-    public static final String PREPARED = "biz.dealnote.phoenix.player.prepared";
-    public static final String REPEATMODE_CHANGED = "biz.dealnote.phoenix.player.repeatmodechanged";
-    public static final String SHUFFLEMODE_CHANGED = "biz.dealnote.phoenix.player.shufflemodechanged";
-    public static final String QUEUE_CHANGED = "biz.dealnote.phoenix.player.queuechanged";
+    public static final String PLAYSTATE_CHANGED = "com.anotap.messenger.player.playstatechanged";
+    public static final String POSITION_CHANGED = "com.anotap.messenger.player.positionchanged";
+    public static final String META_CHANGED = "com.anotap.messenger.player.metachanged";
+    public static final String PREPARED = "com.anotap.messenger.player.prepared";
+    public static final String REPEATMODE_CHANGED = "com.anotap.messenger.player.repeatmodechanged";
+    public static final String SHUFFLEMODE_CHANGED = "com.anotap.messenger.player.shufflemodechanged";
+    public static final String QUEUE_CHANGED = "com.anotap.messenger.player.queuechanged";
 
 
     /**
      * Called to indicate a general service commmand. Used in
      * {@link MediaButtonIntentReceiver}
      */
-    public static final String SERVICECMD = "biz.dealnote.phoenix.player.musicservicecommand";
-    public static final String TOGGLEPAUSE_ACTION = "biz.dealnote.phoenix.player.togglepause";
-    public static final String PAUSE_ACTION = "biz.dealnote.phoenix.player.pause";
-    public static final String STOP_ACTION = "biz.dealnote.phoenix.player.stop";
-    public static final String PREVIOUS_ACTION = "biz.dealnote.phoenix.player.previous";
-    public static final String NEXT_ACTION = "biz.dealnote.phoenix.player.next";
-    public static final String REPEAT_ACTION = "biz.dealnote.phoenix.player.repeat";
-    public static final String SHUFFLE_ACTION = "biz.dealnote.phoenix.player.shuffle";
+    public static final String SERVICECMD = "com.anotap.messenger.player.musicservicecommand";
+    public static final String TOGGLEPAUSE_ACTION = "com.anotap.messenger.player.togglepause";
+    public static final String PAUSE_ACTION = "com.anotap.messenger.player.pause";
+    public static final String STOP_ACTION = "com.anotap.messenger.player.stop";
+    public static final String PREVIOUS_ACTION = "com.anotap.messenger.player.previous";
+    public static final String NEXT_ACTION = "com.anotap.messenger.player.next";
+    public static final String REPEAT_ACTION = "com.anotap.messenger.player.repeat";
+    public static final String SHUFFLE_ACTION = "com.anotap.messenger.player.shuffle";
 
     /**
      * Called to update the service about the foreground state of Apollo's activities
      */
-    public static final String FOREGROUND_STATE_CHANGED = "biz.dealnote.phoenix.player.fgstatechanged";
+    public static final String FOREGROUND_STATE_CHANGED = "com.anotap.messenger.player.fgstatechanged";
     public static final String NOW_IN_FOREGROUND = "nowinforeground";
     public static final String FROM_MEDIA_BUTTON = "frommediabutton";
-    public static final String REFRESH = "biz.dealnote.phoenix.player.refresh";
-    final String SHUTDOWN = "biz.dealnote.phoenix.player.shutdown";
+    public static final String REFRESH = "com.anotap.messenger.player.refresh";
+    final String SHUTDOWN = "com.anotap.messenger.player.shutdown";
 
     /**
      * Called to update the remote control client

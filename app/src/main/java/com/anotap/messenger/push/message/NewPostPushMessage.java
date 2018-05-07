@@ -31,17 +31,17 @@ import static com.anotap.messenger.util.Utils.stringEmptyIfNull;
 public class NewPostPushMessage {
 
     //onMessage, from: 237327763482, collapseKey: new_post, extras: Bundle[{google.sent_time=1484043151928, from_id=-114075457, post_id=11, text=Добрый вечер, type=new_post, google.message_id=0:1484043151930717%8c76e97a5216abdf, group_name=Phoenix for VK Closed, _genSrv=518507, sandbox=0, collapse_key=new_post, post_type=group_status}]
-            //01-10 12:12:31.581 28251-8113/biz.dealnote.phoenix D/MyGcmListenerService: key: google.sent_time, value: 1484043151928, class: class java.lang.Long
-//01-10 12:12:31.581 28251-8113/biz.dealnote.phoenix D/MyGcmListenerService: key: from_id, value: -114075457, class: class java.lang.String
-//01-10 12:12:31.581 28251-8113/biz.dealnote.phoenix D/MyGcmListenerService: key: post_id, value: 11, class: class java.lang.String
-//01-10 12:12:31.581 28251-8113/biz.dealnote.phoenix D/MyGcmListenerService: key: text, value: Добрый вечер, class: class java.lang.String
-//01-10 12:12:31.581 28251-8113/biz.dealnote.phoenix D/MyGcmListenerService: key: type, value: new_post, class: class java.lang.String
-//01-10 12:12:31.581 28251-8113/biz.dealnote.phoenix D/MyGcmListenerService: key: google.message_id, value: 0:1484043151930717%8c76e97a5216abdf, class: class java.lang.String
-//01-10 12:12:31.581 28251-8113/biz.dealnote.phoenix D/MyGcmListenerService: key: group_name, value: Phoenix for VK Closed, class: class java.lang.String
-//01-10 12:12:31.581 28251-8113/biz.dealnote.phoenix D/MyGcmListenerService: key: _genSrv, value: 518507, class: class java.lang.String
-//01-10 12:12:31.582 28251-8113/biz.dealnote.phoenix D/MyGcmListenerService: key: sandbox, value: 0, class: class java.lang.String
-//01-10 12:12:31.582 28251-8113/biz.dealnote.phoenix D/MyGcmListenerService: key: collapse_key, value: new_post, class: class java.lang.String
-//01-10 12:12:31.582 28251-8113/biz.dealnote.phoenix D/MyGcmListenerService: key: post_type, value: group_status, class: class java.lang.String
+            //01-10 12:12:31.581 28251-8113/com.anotap.messenger D/MyGcmListenerService: key: google.sent_time, value: 1484043151928, class: class java.lang.Long
+//01-10 12:12:31.581 28251-8113/com.anotap.messenger D/MyGcmListenerService: key: from_id, value: -114075457, class: class java.lang.String
+//01-10 12:12:31.581 28251-8113/com.anotap.messenger D/MyGcmListenerService: key: post_id, value: 11, class: class java.lang.String
+//01-10 12:12:31.581 28251-8113/com.anotap.messenger D/MyGcmListenerService: key: text, value: Добрый вечер, class: class java.lang.String
+//01-10 12:12:31.581 28251-8113/com.anotap.messenger D/MyGcmListenerService: key: type, value: new_post, class: class java.lang.String
+//01-10 12:12:31.581 28251-8113/com.anotap.messenger D/MyGcmListenerService: key: google.message_id, value: 0:1484043151930717%8c76e97a5216abdf, class: class java.lang.String
+//01-10 12:12:31.581 28251-8113/com.anotap.messenger D/MyGcmListenerService: key: group_name, value: Phoenix for VK Closed, class: class java.lang.String
+//01-10 12:12:31.581 28251-8113/com.anotap.messenger D/MyGcmListenerService: key: _genSrv, value: 518507, class: class java.lang.String
+//01-10 12:12:31.582 28251-8113/com.anotap.messenger D/MyGcmListenerService: key: sandbox, value: 0, class: class java.lang.String
+//01-10 12:12:31.582 28251-8113/com.anotap.messenger D/MyGcmListenerService: key: collapse_key, value: new_post, class: class java.lang.String
+//01-10 12:12:31.582 28251-8113/com.anotap.messenger D/MyGcmListenerService: key: post_type, value: group_status, class: class java.lang.String
 
     private final int accountId;
 

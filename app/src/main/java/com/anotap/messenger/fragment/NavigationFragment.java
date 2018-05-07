@@ -50,7 +50,7 @@ import static com.anotap.messenger.model.SwitchableCategory.FEED;
 import static com.anotap.messenger.model.SwitchableCategory.FEEDBACK;
 import static com.anotap.messenger.model.SwitchableCategory.FRIENDS;
 import static com.anotap.messenger.model.SwitchableCategory.GROUPS;
-import static com.anotap.messenger.model.SwitchableCategory.MUSIC;
+/*import static com.anotap.messenger.model.SwitchableCategory.MUSIC;*/
 import static com.anotap.messenger.model.SwitchableCategory.NEWSFEED_COMMENTS;
 import static com.anotap.messenger.model.SwitchableCategory.PHOTOS;
 import static com.anotap.messenger.model.SwitchableCategory.SEARCH;
@@ -78,20 +78,20 @@ public class NavigationFragment extends BaseFragment implements MenuListAdapter.
     public static final int PAGE_SEARCH = 13;
     public static final int PAGE_NEWSFEED_COMMENTS = 14;
 
-    public static final SectionDrawerItem SECTION_ITEM_FRIENDS = new IconDrawerItem(PAGE_FRIENDS, R.drawable.human_child, R.string.friends);
-    public static final SectionDrawerItem SECTION_ITEM_DIALOGS = new IconDrawerItem(PAGE_DIALOGS, R.drawable.email, R.string.dialogs);
+    public static final SectionDrawerItem SECTION_ITEM_FRIENDS = new IconDrawerItem(PAGE_FRIENDS, R.drawable.ic_person_white_24dp, R.string.friends);
+    public static final SectionDrawerItem SECTION_ITEM_DIALOGS = new IconDrawerItem(PAGE_DIALOGS, R.drawable.ic_chat_white_24dp, R.string.dialogs);
     public static final SectionDrawerItem SECTION_ITEM_FEED = new IconDrawerItem(PAGE_FEED, R.drawable.rss, R.string.feed);
-    public static final SectionDrawerItem SECTION_ITEM_FEEDBACK = new IconDrawerItem(PAGE_NOTIFICATION, R.drawable.heart, R.string.drawer_feedback);
+    public static final SectionDrawerItem SECTION_ITEM_FEEDBACK = new IconDrawerItem(PAGE_NOTIFICATION, R.drawable.ic_notifications_white_24dp, R.string.drawer_feedback);
     public static final SectionDrawerItem SECTION_ITEM_NEWSFEED_COMMENTS = new IconDrawerItem(PAGE_NEWSFEED_COMMENTS, R.drawable.ic_drawer_newsfeed_comment, R.string.drawer_newsfeed_comments);
-    public static final SectionDrawerItem SECTION_ITEM_GROUPS = new IconDrawerItem(PAGE_GROUPS, R.drawable.google_circles, R.string.groups);
+    public static final SectionDrawerItem SECTION_ITEM_GROUPS = new IconDrawerItem(PAGE_GROUPS, R.drawable.ic_group_white_24dp, R.string.groups);
     public static final SectionDrawerItem SECTION_ITEM_PHOTOS = new IconDrawerItem(PAGE_PHOTOS, R.drawable.camera, R.string.photos);
     public static final SectionDrawerItem SECTION_ITEM_VIDEOS = new IconDrawerItem(PAGE_VIDEOS, R.drawable.video, R.string.videos);
     public static final SectionDrawerItem SECTION_ITEM_BOOKMARKS = new IconDrawerItem(PAGE_BOOKMARKS, R.drawable.star, R.string.bookmarks);
-    public static final SectionDrawerItem SECTION_ITEM_AUDIOS = new IconDrawerItem(PAGE_MUSIC, R.drawable.music_circle, R.string.music);
+    //public static final SectionDrawerItem SECTION_ITEM_AUDIOS = new IconDrawerItem(PAGE_MUSIC, R.drawable.music_circle, R.string.music);
     public static final SectionDrawerItem SECTION_ITEM_DOCS = new IconDrawerItem(PAGE_DOCUMENTS, R.drawable.file, R.string.attachment_documents);
     public static final SectionDrawerItem SECTION_ITEM_SEARCH = new IconDrawerItem(PAGE_SEARCH, R.drawable.magnify, R.string.search);
 
-    public static final SectionDrawerItem SECTION_ITEM_SETTINGS = new NoIconDrawerItem(PAGE_PREFERENSES, R.string.settings);
+    public static final SectionDrawerItem SECTION_ITEM_SETTINGS = new IconDrawerItem(PAGE_PREFERENSES, R.drawable.ic_settings_white_24dp, R.string.settings);
     public static final SectionDrawerItem SECTION_ITEM_BY_FULL_APP = new NoIconDrawerItem(PAGE_BUY_FULL_APP, R.string.buy_phoenix);
     public static final SectionDrawerItem SECTION_ITEM_ACCOUNTS = new NoIconDrawerItem(PAGE_ACCOUNTS, R.string.accounts);
 
@@ -239,8 +239,8 @@ public class NavigationFragment extends BaseFragment implements MenuListAdapter.
                 return SECTION_ITEM_PHOTOS;
             case VIDEOS:
                 return SECTION_ITEM_VIDEOS;
-            case MUSIC:
-                return SECTION_ITEM_AUDIOS;
+           /* case MUSIC:
+                return SECTION_ITEM_AUDIOS;*/
             case DOCS:
                 return SECTION_ITEM_DOCS;
             case BOOKMARKS:
