@@ -71,10 +71,10 @@ public class MyGcmListenerService extends FirebaseMessagingService {
 
         final IPushRegistrationResolver registrationResolver = Injection.providePushRegistrationResolver();
 
-        if (!registrationResolver.canReceivePushNotification()) {
+      /*  if (!registrationResolver.canReceivePushNotification()) {
             Logger.d(TAG, "Invalid push registration on VK");
             return;
-        }
+        }*/
 
         switch (collapseKey) {
             case CollapseKey.MSG:
