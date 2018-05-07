@@ -44,6 +44,9 @@ public class MyGcmListenerService extends FirebaseMessagingService {
 
         Logger.d(TAG, "onMessage, from: " + remoteMessage.getFrom() + ", collapseKey: " + collapseKey + ", extras: " + extras);
         if (isEmpty(collapseKey)) {
+            collapseKey = extras.getString("type");
+        }
+        if (isEmpty(collapseKey)) {
             return;
         }
 
@@ -75,6 +78,7 @@ public class MyGcmListenerService extends FirebaseMessagingService {
 
         switch (collapseKey) {
             case CollapseKey.MSG:
+                //TODO: add notifications here for background
                 fireNewMessage(accountId, GCMMessage.genFromBundle(extras));
                 break;
             case CollapseKey.WALL_POST:

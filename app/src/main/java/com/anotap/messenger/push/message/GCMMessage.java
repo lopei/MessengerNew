@@ -1,9 +1,34 @@
 package com.anotap.messenger.push.message;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.NotificationCompat;
 
+import com.anotap.messenger.Extra;
+import com.anotap.messenger.R;
+import com.anotap.messenger.activity.MainActivity;
 import com.anotap.messenger.api.util.VKStringUtils;
+import com.anotap.messenger.link.VkLinkParser;
+import com.anotap.messenger.link.types.AbsLink;
+import com.anotap.messenger.link.types.WallPostLink;
+import com.anotap.messenger.longpoll.AppNotificationChannels;
+import com.anotap.messenger.longpoll.NotificationHelper;
+import com.anotap.messenger.model.Owner;
+import com.anotap.messenger.place.PlaceFactory;
+import com.anotap.messenger.push.NotificationScheduler;
 import com.anotap.messenger.push.NotificationUtils;
+import com.anotap.messenger.push.OwnerInfo;
+import com.anotap.messenger.settings.Settings;
+import com.anotap.messenger.util.PersistentLogger;
+import com.anotap.messenger.util.Utils;
+
+import static com.anotap.messenger.push.NotificationUtils.configOtherPushNotification;
 
 public class GCMMessage {
 

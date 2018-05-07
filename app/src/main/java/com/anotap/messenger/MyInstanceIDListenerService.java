@@ -31,6 +31,7 @@ public class MyInstanceIDListenerService extends FirebaseInstanceIdService {
     // [START refresh_token]
     @Override
     public void onTokenRefresh() {
+        super.onTokenRefresh();
         final IPushRegistrationResolver registrationResolver = Injection.providePushRegistrationResolver();
 
         registrationResolver.resolvePushRegistration()

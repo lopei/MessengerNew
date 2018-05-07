@@ -97,10 +97,10 @@ public class PushRegistrationResolver implements IPushRegistrationResolver {
                         }
                     }
 
-                    if (hasAuth && hasOk && !hasRemove && needUnregister.isEmpty()) {
+                  /*  if (hasAuth && hasOk && !hasRemove && needUnregister.isEmpty()) {
                         Logger.d(TAG, "Has auth, valid registration, OK");
                         return Completable.complete();
-                    }
+                    }*/
 
                     Completable completable = Completable.complete();
 

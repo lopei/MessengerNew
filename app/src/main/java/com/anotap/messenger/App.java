@@ -3,9 +3,13 @@ package com.anotap.messenger;
 import android.app.Application;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatDelegate;
+import android.text.TextUtils;
 
 import com.anotap.messenger.api.PicassoInstance;
+import com.anotap.messenger.push.IPushRegistrationResolver;
 import com.anotap.messenger.settings.Settings;
+import com.anotap.messenger.util.RxUtils;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 public class App extends Application {
 
@@ -24,6 +28,15 @@ public class App extends Application {
                 .incrementRunCount();
 
         PicassoInstance.init(this, Injection.provideProxySettings());
+
+        if (!TextUtils.isEmpty(FirebaseInstanceId.getInstance().getToken())) {
+            final IPushRegistrationResolver registrationResolver = Injection.providePushRegistrationResolver();
+
+            registrationResolver.resolvePushRegistration()
+                    .compose(RxUtils.applyCompletableIOToMainSchedulers())
+                    .subscribe(() -> {
+                    }, Throwable::printStackTrace);
+        }
     }
 
     @NonNull
