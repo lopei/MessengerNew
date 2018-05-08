@@ -717,12 +717,12 @@ public class ChatFragment extends PlaceSupportPresenterFragment<ChatPrensenter, 
         menu.findItem(R.id.action_leave_chat).setVisible(mOptionMenuSettings.get(LEAVE_CHAT_VISIBLE, false));
         menu.findItem(R.id.action_change_chat_title).setVisible(mOptionMenuSettings.get(CHANGE_CHAT_TITLE_VISIBLE, false));
         menu.findItem(R.id.action_chat_members).setVisible(mOptionMenuSettings.get(CHAT_MEMBERS_VISIBLE, false));
-        menu.findItem(R.id.action_key_exchange).setVisible(mOptionMenuSettings.get(KEY_EXCHANGE_VISIBLE, false));
+        menu.findItem(R.id.action_key_exchange).setVisible(mOptionMenuSettings.get(KEY_EXCHANGE_VISIBLE, false) && false);
 
         MenuItem encryptionStatusItem = menu.findItem(R.id.crypt_state);
         boolean encryptionStatusVisible = mOptionMenuSettings.get(ENCRYPTION_STATUS_VISIBLE, false);
 
-        encryptionStatusItem.setVisible(encryptionStatusVisible);
+        encryptionStatusItem.setVisible(encryptionStatusVisible && false);
 
         if (encryptionStatusVisible) {
             @AttrRes
