@@ -49,7 +49,7 @@ public class MessageAttachmentsFragment extends AbsPresenterBottomSheetFragment<
         IMessageAttachmentsView> implements IMessageAttachmentsView, AttachmentsBottomSheetAdapter.ActionListener {
 
     private static final int REQUEST_ADD_VKPHOTO = 17;
-    private static final int REQUEST_PERMISSION_CAMERA = 16;
+    private static final int REQUEST_PERMISSION_CAMERA_AND_WRITE = 16;
     private static final int REQUEST_PHOTO_FROM_CAMERA = 15;
     private static final int REQUEST_SELECT_ATTACHMENTS = 14;
 
@@ -201,8 +201,8 @@ public class MessageAttachmentsFragment extends AbsPresenterBottomSheetFragment<
     }
 
     @Override
-    public void requestCameraPermission() {
-        requestPermissions(new String[]{Manifest.permission.CAMERA}, REQUEST_PERMISSION_CAMERA);
+    public void requestCameraAndWritePermission() {
+        requestPermissions(new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSION_CAMERA_AND_WRITE);
     }
 
     @Override
@@ -238,8 +238,8 @@ public class MessageAttachmentsFragment extends AbsPresenterBottomSheetFragment<
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if(requestCode == REQUEST_PERMISSION_CAMERA){
-            getPresenter().fireCameraPermissionResolved();
+        if(requestCode == REQUEST_PERMISSION_CAMERA_AND_WRITE){
+            getPresenter().fireCameraAndWritePermissionResolved();
         }
     }
 
