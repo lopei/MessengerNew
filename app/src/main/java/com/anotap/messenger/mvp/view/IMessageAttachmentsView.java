@@ -32,7 +32,7 @@ public interface IMessageAttachmentsView extends IMvpView, IErrorView {
 
     void setEmptyViewVisible(boolean visible);
 
-    void requestCameraPermission();
+    void requestCameraAndWritePermission();
 
     void startCamera(@NonNull Uri fileUri);
 

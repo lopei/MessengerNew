@@ -321,17 +321,17 @@ public class MessageAttachmentsPresenter extends RxSupportPresenter<IMessageAtta
         doUploadPhotos(photos, imageSize);
     }
 
-    public void fireCameraPermissionResolved() {
+    public void fireCameraAndWritePermissionResolved() {
         if(AppPerms.hasCameraPermision(getApplicationContext())){
             makePhotoInternal();
         }
     }
 
     public void fireButtonCameraClick() {
-        if(AppPerms.hasCameraPermision(getApplicationContext())){
+        if(AppPerms.hasCameraPermision(getApplicationContext()) && AppPerms.hasWriteStoragePermision(getApplicationContext())){
             makePhotoInternal();
         } else {
-            getView().requestCameraPermission();
+            getView().requestCameraAndWritePermission();
         }
     }
 
