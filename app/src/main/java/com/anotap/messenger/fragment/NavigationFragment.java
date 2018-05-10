@@ -168,13 +168,15 @@ public class NavigationFragment extends BaseFragment implements MenuListAdapter.
         ImageView backgroundImage = vHeader.findViewById(R.id.header_navi_menu_background);
 
         boolean dark = Settings.get().ui().isDarkModeEnabled(requireActivity());
-        File file = PreferencesFragment.getDrawerBackgroundFile(requireActivity(), !dark);
+//        File file = PreferencesFragment.getDrawerBackgroundFile(requireActivity(), !dark);
+//
+//        if (file.exists()) {
+//            PicassoInstance.with().load(file).into(backgroundImage);
+//        } else {
+//            backgroundImage.setImageResource(R.drawable.background_drawer_header_vector);
+//        }
 
-        if (file.exists()) {
-            PicassoInstance.with().load(file).into(backgroundImage);
-        } else {
-            backgroundImage.setImageResource(R.drawable.background_drawer_header_vector);
-        }
+        backgroundImage.setImageResource(R.drawable.menu_header_bg);
 
         ivHeaderAvatar = vHeader.findViewById(R.id.header_navi_menu_avatar);
         tvUserName = vHeader.findViewById(R.id.header_navi_menu_username);
