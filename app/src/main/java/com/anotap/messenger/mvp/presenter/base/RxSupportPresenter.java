@@ -17,6 +17,9 @@ import com.anotap.messenger.util.InstancesCounter;
 import com.anotap.messenger.util.Utils;
 import com.anotap.mvp.core.AbsPresenter;
 import com.anotap.mvp.core.IMvpView;
+
+import java.net.ConnectException;
+
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
@@ -101,6 +104,9 @@ public abstract class RxSupportPresenter<V extends IMvpView> extends AbsPresente
     }
 
     protected void showError(IErrorView view, Throwable throwable) {
+        if(throwable instanceof ConnectException) {
+            return;
+        }
         if (isNull(view)) {
             return;
         }
