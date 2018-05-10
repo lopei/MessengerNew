@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.anotap.messenger.model.Message;
 import com.squareup.picasso.Transformation;
 
 import java.util.EventListener;
@@ -60,6 +61,10 @@ public class DialogPreviewAdapter extends RecyclerView.Adapter<DialogPreviewAdap
             bindGroupChat(holder, (Chat) item);
         }
 
+        if (item instanceof Message) {
+            bindUserDialog(holder, (Message) item);
+        }
+
         holder.itemView.setOnClickListener(v -> actionListener.onEntryClick(item));
     }
 
@@ -71,6 +76,11 @@ public class DialogPreviewAdapter extends RecyclerView.Adapter<DialogPreviewAdap
     private void bindUserDialog(DialogPreviewHolder holder, User item) {
         holder.mTitle.setText(item.getFullName());
         ViewUtils.displayAvatar(holder.mAvatar, mTransformation, item.get100photoOrSmaller(), Constants.PICASSO_TAG);
+    }
+
+    private void bindUserDialog(DialogPreviewHolder holder, Message item) {
+        holder.mTitle.setText(item.getSender().getFullName());
+        ViewUtils.displayAvatar(holder.mAvatar, mTransformation, item.getSender().get100photoOrSmaller(), Constants.PICASSO_TAG);
     }
 
     private void bindGroupDialog(DialogPreviewHolder holder, Community item) {

@@ -264,5 +264,11 @@ class MessagesApi extends AbsApi implements IMessagesApi {
                         .searchDialogs(query, limit, fileds)
                         .map(extractResponseWithErrorHandling())
                         .map(response -> isNull(response.getData()) ? Collections.emptyList() : response.getData()));
+
+//        return serviceRx(TokenType.USER)
+//                .flatMap(service -> service
+//                        .search(query,null, null, 0,0,  limit)
+//                        .map(extractResponseWithErrorHandling())
+//                        .map(response -> isNull(response.items) ? Collections.emptyList() : response.items));
     }
 }

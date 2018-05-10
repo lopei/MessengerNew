@@ -51,7 +51,9 @@ public abstract class AbsSearchPresenter<V extends IBaseSearchView<T>, C extends
 
         this.nextFrom = getInitialNextFrom();
         this.data = new ArrayList<>();
-        this.actionHandler.setAction((what, object) -> object.doSearch());
+        this.actionHandler.setAction((what, object) -> {
+            object.doSearch();
+        });
     }
 
     @Override
@@ -185,6 +187,7 @@ public abstract class AbsSearchPresenter<V extends IBaseSearchView<T>, C extends
     }
 
     abstract Single<Pair<List<T>, N>> doSearch(int accountId, C criteria, N startFrom);
+
 
     abstract C instantiateEmptyCriteria();
 

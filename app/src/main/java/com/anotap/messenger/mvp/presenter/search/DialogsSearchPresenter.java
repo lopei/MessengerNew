@@ -8,9 +8,11 @@ import java.util.List;
 import com.anotap.messenger.domain.IMessagesInteractor;
 import com.anotap.messenger.domain.InteractorFactory;
 import com.anotap.messenger.fragment.search.criteria.DialogsSearchCriteria;
+import com.anotap.messenger.fragment.search.criteria.MessageSeachCriteria;
 import com.anotap.messenger.fragment.search.nextfrom.IntNextFrom;
 import com.anotap.messenger.model.Chat;
 import com.anotap.messenger.model.Community;
+import com.anotap.messenger.model.Message;
 import com.anotap.messenger.model.Peer;
 import com.anotap.messenger.model.User;
 import com.anotap.messenger.mvp.view.search.IDialogsSearchView;
@@ -48,12 +50,19 @@ public class DialogsSearchPresenter extends AbsSearchPresenter<IDialogsSearchVie
 
     @Override
     Single<Pair<List<Object>, IntNextFrom>> doSearch(int accountId, DialogsSearchCriteria criteria, IntNextFrom startFrom) {
-        return messagesInteractor.searchDialogs(accountId, 20, criteria.getQuery())
-                .map(models -> {
+        MessageSeachCriteria newCriteria = new MessageSeachCriteria(criteria.getQuery());
+        return messagesInteractor.searchMessages(accountId, null, 20, 0, newCriteria.getQuery())
+                .map((List models) -> {
                     // null because load more not supported
                     return Pair.create(models, null);
                 });
+//        return messagesInteractor.searchDialogs(accountId, 20, criteria.getQuery())
+//                .map(models -> {
+//                    // null because load more not supported
+//                    return Pair.create(models, null);
+//                });
     }
+
 
     @Override
     DialogsSearchCriteria instantiateEmptyCriteria() {
@@ -81,6 +90,12 @@ public class DialogsSearchPresenter extends AbsSearchPresenter<IDialogsSearchVie
             Chat chat = (Chat) o;
             final Peer peer = new Peer(Peer.fromChatId(chat.getId())).setTitle(chat.getTitle()).setAvaUrl(chat.getMaxSquareAvatar());
             getView().openChatWith(accountId, messagesOwnerId, peer);
+        }
+    }
+
+    public void firePublishData() {
+        if (isGuiReady()) {
+            getView().displayData(data);
         }
     }
 }
