@@ -22,7 +22,6 @@ import com.anotap.messenger.dialog.DirectAuthDialog;
 import com.anotap.messenger.model.Token;
 import com.anotap.messenger.settings.CurrentTheme;
 import com.anotap.messenger.settings.IProxySettings;
-import com.anotap.messenger.settings.ProxySettingsImpl;
 import com.anotap.messenger.settings.Settings;
 import com.anotap.messenger.util.Logger;
 import com.anotap.messenger.util.ProxyUtil;
@@ -63,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         WebView webview = findViewById(R.id.vkontakteview);
-        if (ProxySettingsImpl.getProxyActive(this)) {
+        if (IProxySettings.getProxyActive(this)) {
             ProxyUtil.setProxy(webview, proxySettings.getActiveProxy().getAddress(), proxySettings.getActiveProxy().getPort());
         }
 

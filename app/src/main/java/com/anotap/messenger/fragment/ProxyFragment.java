@@ -13,12 +13,12 @@ import android.widget.TextView;
 
 import com.anotap.messenger.Injection;
 import com.anotap.messenger.R;
-import com.anotap.messenger.api.AnotapWebService;
 import com.anotap.messenger.api.model.anotap.ProxyResponse;
 import com.anotap.messenger.api.util.RxUtil;
 import com.anotap.messenger.fragment.base.BaseFragment;
 import com.anotap.messenger.model.ProxyConfig;
-import com.anotap.messenger.settings.ProxySettingsImpl;
+import com.anotap.messenger.settings.IProxySettings;
+import com.anotap.messenger.util.ProxyUtil;
 import com.anotap.messenger.util.Utils;
 
 import java.util.concurrent.TimeUnit;
@@ -63,7 +63,7 @@ public class ProxyFragment extends BaseFragment {
         view.findViewById(R.id.buttonYes).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ProxySettingsImpl.setProxyActive(true, getContext());
+                IProxySettings.setProxyActive(true, getContext());
                 refresh.setRefreshing(true);
                 updateProxyFromApi();
 
@@ -73,34 +73,28 @@ public class ProxyFragment extends BaseFragment {
         view.findViewById(R.id.buttonNo).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ProxySettingsImpl.setProxyActive(false, getContext());
+                IProxySettings.setProxyActive(false, getContext());
                 if (listener != null) {
                     listener.onClick(v);
                 }
             }
         });
-        if (Injection.provideProxySettings().getActiveProxy() != null) {
-            Log.e("Proxy", Injection.provideProxySettings().getActiveProxy().getAddress() + " " +
-                    Injection.provideProxySettings().getActiveProxy().getPort());
-        }
 
         return view;
     }
 
     private void updateProxyFromApi() {
-        RxUtil.networkConsumer(AnotapWebService.service.getProxy(), new Consumer<ProxyResponse>() {
+        ProxyUtil.updateProxyFromApi(new ProxyUtil.UpdateProxyListener() {
             @Override
-            public void accept(ProxyResponse proxyResponse) {
-                Injection.provideProxySettings().setActive(new ProxyConfig(0, proxyResponse.getProxy().getIp(), proxyResponse.getProxy().getPort()));
+            public void onSuccess(ProxyResponse proxyResponse) {
                 refresh.setRefreshing(false);
                 if (listener != null) {
                     listener.onClick(null);
                 }
             }
-        }, new Consumer<Throwable>() {
+
             @Override
-            public void accept(Throwable throwable) {
-                throwable.printStackTrace();
+            public void onError(Throwable throwable) {
                 refresh.setRefreshing(false);
                 Utils.showRedTopToast(getActivity(), R.string.error_retrieving_proxy);
             }
@@ -108,8 +102,8 @@ public class ProxyFragment extends BaseFragment {
     }
 
     private void selectProxy() {
-        ProxyConfig config = Injection.provideProxySettings().getActiveProxy();
-        if (config == null) {
+
+        if (!IProxySettings.getProxyActive(getContext())) {
             animateViews();
         } else {
             RxUtil.delayedConsumer(PROXY_DELAY, new Consumer<Long>() {

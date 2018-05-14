@@ -115,6 +115,7 @@ import com.anotap.messenger.player.MusicPlaybackService;
 import com.anotap.messenger.player.util.MusicUtils;
 import com.anotap.messenger.push.IPushRegistrationResolver;
 import com.anotap.messenger.settings.CurrentTheme;
+import com.anotap.messenger.settings.IProxySettings;
 import com.anotap.messenger.settings.ISettings;
 import com.anotap.messenger.settings.Settings;
 import com.anotap.messenger.upload.UploadService;
@@ -125,6 +126,7 @@ import com.anotap.messenger.util.AssertUtils;
 import com.anotap.messenger.util.Logger;
 import com.anotap.messenger.util.Objects;
 import com.anotap.messenger.util.Pair;
+import com.anotap.messenger.util.ProxyUtil;
 import com.anotap.messenger.util.RxUtils;
 import com.anotap.messenger.util.StatusbarUtil;
 import com.anotap.messenger.util.Utils;
@@ -191,11 +193,26 @@ public class MainActivity extends AppCompatActivity implements NavigationFragmen
         super.onCreate(savedInstanceState);
         getDelegate().applyDayNight();
 
-        if (Injection.provideProxySettings().getActiveProxy() != null) {
-            logProxy();
-            updateProxyFromApi();
+        if (IProxySettings.getProxyActive(this)) {
+            ProxyUtil.updateProxyFromApi(new ProxyUtil.UpdateProxyListener() {
+                @Override
+                public void onSuccess(ProxyResponse proxyResponse) {
+                    continueInit(savedInstanceState);
+                }
+
+                @Override
+                public void onError(Throwable throwable) {
+
+                }
+            });
+        } else {
+            continueInit(savedInstanceState);
         }
 
+
+    }
+
+    private void continueInit(Bundle savedInstanceState) {
         mCompositeDisposable.add(Settings.get()
                 .accounts()
                 .observeChanges()
@@ -267,22 +284,17 @@ public class MainActivity extends AppCompatActivity implements NavigationFragmen
         Logger.d(TAG, "" + (getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK));
     }
 
-    private void logProxy() {
-        Log.e("Proxy", Injection.provideProxySettings().getActiveProxy().getAddress() + " " +
-                Injection.provideProxySettings().getActiveProxy().getPort());
-    }
-
-    private void updateProxyFromApi() {
-        if (Injection.provideProxySettings().getActiveProxy() != null) {
-            RxUtil.networkConsumer(AnotapWebService.service.getProxy(), new Consumer<ProxyResponse>() {
-                @Override
-                public void accept(ProxyResponse proxyResponse) {
-                    Injection.provideProxySettings().setActive(new ProxyConfig(0, proxyResponse.getProxy().getIp(), proxyResponse.getProxy().getPort()));
-                    logProxy();
-                }
-            });
-        }
-    }
+//    private void updateProxyFromApi() {
+//        if (Injection.provideProxySettings().getActiveProxy() != null) {
+//            RxUtil.networkConsumer(AnotapWebService.service.getProxy(), new Consumer<ProxyResponse>() {
+//                @Override
+//                public void accept(ProxyResponse proxyResponse) {
+//                    Injection.provideProxySettings().setActive(new ProxyConfig(0, proxyResponse.getProxy().getIp(), proxyResponse.getProxy().getPort()));
+//                    logProxy();
+//                }
+//            });
+//        }
+//    }
 
     private void startEnterPinActivity() {
         Intent intent = new Intent(this, EnterPinActivity.getClass(this));

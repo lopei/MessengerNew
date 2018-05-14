@@ -2,7 +2,10 @@ package com.anotap.messenger.settings;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
+import com.anotap.messenger.api.model.anotap.ProxyResponse;
+import com.anotap.messenger.util.ProxyUtil;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -25,10 +28,6 @@ import static com.anotap.messenger.util.Utils.nonEmpty;
  */
 public class ProxySettingsImpl implements IProxySettings {
 
-    private final static String PREF_NAME = "proxy_settings";
-    private final static String KEY_NEXT_ID = "next_id";
-    private final static String KEY_LIST = "list";
-    private static final String KEY_ACTIVE = "active_proxy";
 
     private static final Gson GSON = new Gson();
 
@@ -45,13 +44,6 @@ public class ProxySettingsImpl implements IProxySettings {
         this.activePublisher = PublishSubject.create();
     }
 
-    public static void setProxyActive(boolean active, Context context) {
-        context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE).edit().putBoolean(KEY_ACTIVE, active).apply();
-    }
-
-    public static boolean getProxyActive(Context context) {
-        return context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE).getBoolean(KEY_ACTIVE, false);
-    }
 
     @Override
     public void put(String address, int port) {
@@ -110,13 +102,16 @@ public class ProxySettingsImpl implements IProxySettings {
     public ProxyConfig getActiveProxy() {
         boolean active = preferences.getBoolean(KEY_ACTIVE, false);
         if (activeProxy == null) {
-            activeProxy = new ProxyConfig(0, "188.130.138.95", 8080);
+            ProxyResponse proxyResponse = ProxyUtil.getProxyFromApiSync();
+            activeProxy = new ProxyConfig(0, proxyResponse.getProxy().getIp(), proxyResponse.getProxy().getPort());
+//            activeProxy = new ProxyConfig(0, "95.213.236.188", 3128);
         }
         return active ? activeProxy : null;
     }
 
     @Override
     public void setActive(ProxyConfig config) {
+        Log.e("SET PROXY", config.getAddress());
         activeProxy = config;
 //        preferences.edit()
 //                .putString(KEY_ACTIVE, Objects.isNull(config) ? null : GSON.toJson(config))
