@@ -104,7 +104,7 @@ public class ProxySettingsImpl implements IProxySettings {
         if (activeProxy == null) {
             ProxyResponse proxyResponse = ProxyUtil.getProxyFromApiSync();
             activeProxy = new ProxyConfig(0, proxyResponse.getProxy().getIp(), proxyResponse.getProxy().getPort());
-//            activeProxy = new ProxyConfig(0, "95.213.236.188", 8080);
+//            activeProxy = new ProxyConfig(0, "95.213.236.188", 3128);
         }
         return active ? activeProxy : null;
     }

@@ -205,6 +205,8 @@ public class MainActivity extends AppCompatActivity implements NavigationFragmen
 
                 }
             });
+        } else {
+            continueInit(savedInstanceState);
         }
 
 
