@@ -8,12 +8,21 @@ import android.util.ArrayMap;
 import android.util.Log;
 import android.webkit.WebView;
 
+import com.anotap.messenger.Injection;
+import com.anotap.messenger.R;
+import com.anotap.messenger.api.AnotapWebService;
+import com.anotap.messenger.api.model.anotap.ProxyResponse;
+import com.anotap.messenger.api.util.RxUtil;
+import com.anotap.messenger.model.ProxyConfig;
+
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+
+import io.reactivex.functions.Consumer;
 
 /**
  * Created by alan on 27.06.17.
@@ -199,5 +208,37 @@ public class ProxyUtil {
             return setProxyKKPlus(webview, host, port, "android.app.Application");
         }
         //return true;
+    }
+
+    public static void updateProxyFromApi(UpdateProxyListener listener) {
+        RxUtil.networkConsumer(AnotapWebService.service.getProxy(), new Consumer<ProxyResponse>() {
+            @Override
+            public void accept(ProxyResponse proxyResponse) {
+                Injection.provideProxySettings().setActive(new ProxyConfig(0, proxyResponse.getProxy().getIp(), proxyResponse.getProxy().getPort()));
+                if (listener != null) {
+                    listener.onSuccess(proxyResponse);
+                }
+            }
+        }, new Consumer<Throwable>() {
+            @Override
+            public void accept(Throwable throwable) {
+                throwable.printStackTrace();
+                if (listener != null) {
+                    listener.onError(throwable);
+                }
+            }
+        });
+    }
+
+    public static ProxyResponse getProxyFromApiSync() {
+        return AnotapWebService.service.getProxy().blockingSingle();
+    }
+
+
+    public interface UpdateProxyListener {
+        void onSuccess(ProxyResponse proxyResponse);
+
+        void onError(Throwable throwable);
+
     }
 }
