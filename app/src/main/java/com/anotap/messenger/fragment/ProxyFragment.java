@@ -103,7 +103,7 @@ public class ProxyFragment extends BaseFragment {
 
     private void selectProxy() {
 
-        if (IProxySettings.getProxyActive(getContext())) {
+        if (!IProxySettings.getProxyActive(getContext())) {
             animateViews();
         } else {
             RxUtil.delayedConsumer(PROXY_DELAY, new Consumer<Long>() {
